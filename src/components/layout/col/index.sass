@@ -1,0 +1,45 @@
+@mixin colgen($type)
+  @for $i from 1 through 12
+    .bxer-col--#{$type}-#{$i}
+      width: percentage(1/12*$i)
+
+@mixin basecol($type)
+  @for $i from 1 through 12
+    .bxer-col--#{$type}-#{$i}
+      position: relative
+      min-height: 1px
+      vertical-align: top
+      float: left
+      box-sizing: border-box
+
+// 默认
+@include basecol(span)
+
+// < 768px
+@include basecol(xs)
+// >= 768px
+@include basecol(sm)
+// >= 992px
+@include basecol(md)
+// >= 1200px
+@include basecol(lg)
+
+
+// 默认
+@include colgen(span)
+
+// < 768px
+@media (max-width: 768px)
+  @include colgen(xs)
+
+// >= 768px
+@media (min-width: 768px)
+  @include colgen(sm)
+
+// >= 992px
+@media (min-width: 992px)
+  @include colgen(md)
+
+// >= 1200px
+@media (min-width: 1200px)
+  @include colgen(lg)

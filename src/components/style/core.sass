@@ -1,0 +1,22 @@
+@import "color"
+
+@mixin disabled
+  background-color: $disabled-bg-color
+  border-color:  $disabled-border-color
+  color:  $disabled-color
+  cursor: not-allowed
+
+@mixin input-common
+  box-sizing: border-box
+  border: 1px solid $common-border-color
+  border-radius: $common-radius
+  padding: 0 8px
+  height: 28px
+  background-color: #fff
+  vertical-align: middle∂
+  color: inherit
+
+
+@mixin input-common-focused
+  border-color: $primary-color
+  outline: none
