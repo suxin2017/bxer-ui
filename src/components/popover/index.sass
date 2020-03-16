@@ -1,0 +1,86 @@
+.bxer-open
+  animation: open .2s
+
+.bxer-close
+  animation: close .2s
+
+@keyframes open
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@keyframes close
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+.bxer-popover
+  position: absolute
+  top: -1234px
+  left: -1234px
+
+  &:after
+    content: ' '
+    position: absolute
+    width: 0px
+    height: 0px
+
+$border_width: 7px
+$triangle_border: $border_width solid transparent
+$triangle: $border_width solid #fff
+
+@mixin common_border
+  border: $triangle_border
+
+.bxer-popover__right
+  .bxer-popover__content
+    box-shadow: -2px 0px 7px 0px rgba(0, 0, 0, 0.25)
+
+  &:after
+    top: 4px
+    left: -14px
+    @include common_border
+    border-right: $border_width solid #fff
+
+.bxer-popover__left
+  .bxer-popover__content
+    box-shadow: 2px 0px 7px 0px rgba(0, 0, 0, 0.25)
+
+  &:after
+    top: 4px
+    right: -14px
+    @include common_border
+    border-left: $border_width solid #fff
+
+.bxer-popover__up
+  .bxer-popover__content
+    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.25)
+
+  &:after
+    left: 4px
+    @include common_border
+    border-top: $border_width solid #fff
+
+.bxer-popover__down
+  .bxer-popover__content
+    box-shadow: 0px -2px 7px 0px rgba(0, 0, 0, 0.25)
+
+  &:after
+    left: 4px
+    top: -14px
+    @include common_border
+    border-bottom: $border_width solid #fff
+
+
+.bxer-popover__content
+  padding: 7px 10px
+  background: #fff
+  border-radius: 2px
+  word-wrap: break-word
+  max-width: 200px
+  max-height: 300px
+  overflow: auto
+
+
