@@ -8,7 +8,9 @@ import './index.sass';
 Popover.propTypes = {};
 
 
-function Popover({children, trigger = 'click', placement = 'right'}) {
+function Popover(props) {
+    const {children, trigger = 'click', placement = 'right'} = props;
+
     const triggerNode = React.Children.only(children);
 
     const [open, setOpen] = useState(false);
@@ -20,6 +22,8 @@ function Popover({children, trigger = 'click', placement = 'right'}) {
 
     const triggerRef = useRef(null);
 
+    const timer = useRef(null);
+
 
     // 懒加载获取弹框容器
     function getPopover() {
@@ -27,14 +31,14 @@ function Popover({children, trigger = 'click', placement = 'right'}) {
             wrapperRef.current = document.createElement('div');
             wrapperRef.current.className = classNames('bxer-popover',
                 `bxer-popover__${placement}`
-                );
-            wrapperRef.current.addEventListener('click',(e)=>{
+            );
+            wrapperRef.current.addEventListener('click', (e) => {
                 e.stopPropagation()
-            })
+            });
             document.body.appendChild(wrapperRef.current);
             renderPopover();
         }
-        
+
         return wrapperRef.current;
     }
 
@@ -49,6 +53,23 @@ function Popover({children, trigger = 'click', placement = 'right'}) {
                 wrapperRef.current.style.left = `${left}px`;
                 wrapperRef.current.style.display = 'none';
                 wrapperRef.current.style.opacity = '0';
+                const handleEvent = {
+                    onMouseOver: (e) => {
+                        if (timer.current) {
+                            clearTimeout(timer.current)
+                        }
+                        setOpen(true)
+
+                    },
+                    onMouseOut: (e) => {
+                        timer.current = setTimeout(() => {
+                                setOpen(false)
+                            }
+                            , 200)
+                    }
+                }
+                wrapperRef.current.onmouseover = handleEvent.onMouseOver;
+                wrapperRef.current.onmouseout = handleEvent.onMouseOut;
             });
     }
 
@@ -67,23 +88,65 @@ function Popover({children, trigger = 'click', placement = 'right'}) {
             current.style.display = 'block';
             current.style.opacity = '1';
         } else {
-            setTimeout(()=>{
-            current.style.display = 'none';
-            },200)
+            setTimeout(() => {
+                current.style.display = 'none';
+            }, 200)
         }
     }
+
     function handleWindowClick(e) {
-        if(e.target !== triggerRef.current){
+        if (e.target !== triggerRef.current) {
             setOpen(false)
         }
     }
 
 
+    function handleEventTrigger(eventType) {
+        if (eventType === 'hover') {
+            const handleEvent = {
+                onMouseOver: (e) => {
+                    if (timer.current) {
+                        clearTimeout(timer.current)
+                    }
+                    setOpen(true)
+
+                },
+                onMouseOut: (e) => {
+                    timer.current = setTimeout(() => {
+                            setOpen(false)
+                        }
+                        , 200)
+                }
+            }
+
+            return handleEvent;
+
+        }
+        const eventName = `on${capitalize(eventType)}`;
+
+        if (eventType === 'contextMenu') {
+
+            return {
+                onContextMenu: (e) => {
+                    e.preventDefault();
+                    setOpen(true)
+
+                }
+            }
+        }
+
+        return {
+            [eventName]: (e) => {
+                setOpen(!open);
+            },
+        }
+    }
+
     useEffect(() => {
         getPopover();
-        window.addEventListener('click',handleWindowClick);
+        window.addEventListener('click', handleWindowClick);
         return () => {
-            window.removeEventListener('click',handleWindowClick);
+            window.removeEventListener('click', handleWindowClick);
             document.body.removeChild(wrapperRef.current);
         }
     }, []);
@@ -94,13 +157,11 @@ function Popover({children, trigger = 'click', placement = 'right'}) {
         handleAnimation();
     }, [open]);
 
-
+    console.log(handleEventTrigger(trigger))
     const option = {
-        [`on${capitalize(trigger)}`]: () => {
-            wrapperRef.current.style.display = 'block';
-            setOpen(!open)
-        },
-        ref: triggerRef
+
+        ref: triggerRef,
+        ...handleEventTrigger(trigger)
 
     };
 

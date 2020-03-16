@@ -55,3 +55,26 @@ export const 滚动条 = ()=> <div style={{
 
 </div>
 
+export const 触发条件 = ()=> <div style={{
+    width:'120vw',
+    height:'120vh',
+    margin:'20vw'
+}}>
+    <div style={{margin:'40px'}}>
+        <Popover trigger={'click'}><span >click</span></Popover>
+    </div>
+    <div style={{margin:'40px'}}>
+        <Popover trigger={'hover'}><span >hover</span></Popover>
+
+    </div>
+    <div style={{margin:'40px'}}>
+        <Popover trigger={'contextMenu'}><span >contextMenu</span></Popover>
+
+    </div>
+    <div style={{margin:'40px'}}>
+        <Popover trigger={'focus'}><input value={'focus'}></input></Popover>
+
+    </div>
+
+</div>
+
