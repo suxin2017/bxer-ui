@@ -12,3 +12,4 @@ export default {
 }
 
 export const 基本用法 = ()=><Input onChange={action('input-onchange')}></Input>
+export const 禁用 = ()=><Input onChange={action('input-onchange')} value={text('value','disabled')} disabled></Input>
