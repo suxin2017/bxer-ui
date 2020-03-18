@@ -12,23 +12,23 @@ export default {
 }
 
 export const 基本用法 = ()=> <div style={{
-   margin:'400px'
+   margin:'200px'
 }}>
-    <div style={{margin:'40px'}}>
-    <Popover placement={'up'}><span >up</span></Popover>
-    </div>
-    <div style={{margin:'40px'}}>
-        <Popover placement={'down'}><span >down</span></Popover>
+        <div style={{margin:'20px'}}>
+            <Popover placement={'up'}   content={'up'}><span >up</span></Popover>
+        </div>
+        <div style={{margin:'20px'}}>
+            <Popover placement={'bottom'}  content={'bottom'}><span >bottom</span></Popover>
 
-    </div>
-    <div style={{margin:'40px'}}>
-        <Popover placement={'left'}><span >left</span></Popover>
+        </div>
+        <div style={{margin:'20px'}}>
+            <Popover placement={'left'}  content={'left'}><span >left</span></Popover>
 
-    </div>
-    <div style={{margin:'40px'}}>
-        <Popover placement={'right'}><span >right</span></Popover>
+        </div>
+        <div style={{margin:'20px'}}>
+            <Popover placement={'right'} content={'right'} ><span >right</span></Popover>
 
-    </div>
+        </div>
 
 </div>
 
@@ -38,18 +38,18 @@ export const 滚动条 = ()=> <div style={{
     margin:'20vw'
 }}>
     <div style={{margin:'40px'}}>
-        <Popover placement={'up'}><span >up</span></Popover>
+        <Popover placement={'up'}   content={'up'}><span >up</span></Popover>
     </div>
     <div style={{margin:'40px'}}>
-        <Popover placement={'down'}><span >down</span></Popover>
+        <Popover placement={'bottom'}  content={'bottom'}><span >bottom</span></Popover>
 
     </div>
     <div style={{margin:'40px'}}>
-        <Popover placement={'left'}><span >left</span></Popover>
+        <Popover placement={'left'}  content={'left'}><span >left</span></Popover>
 
     </div>
     <div style={{margin:'40px'}}>
-        <Popover placement={'right'}><span >right</span></Popover>
+        <Popover placement={'right'} content={'right'} ><span >right</span></Popover>
 
     </div>
 
@@ -61,18 +61,18 @@ export const 触发条件 = ()=> <div style={{
     margin:'20vw'
 }}>
     <div style={{margin:'40px'}}>
-        <Popover trigger={'click'}><span >click</span></Popover>
+        <Popover trigger={'click'} content={'click'}><span >click</span></Popover>
     </div>
     <div style={{margin:'40px'}}>
-        <Popover trigger={'hover'}><span >hover</span></Popover>
+        <Popover trigger={'hover'} content={'hover'}><span >hover</span></Popover>
 
     </div>
     <div style={{margin:'40px'}}>
-        <Popover trigger={'contextMenu'}><span >contextMenu</span></Popover>
+        <Popover trigger={'contextMenu'} content={'contextMenu'}><span >contextMenu</span></Popover>
 
     </div>
     <div style={{margin:'40px'}}>
-        <Popover trigger={'focus'}><input value={'focus'}></input></Popover>
+        <Popover trigger={'focus'} content={'focus'}><input value={'focus'}></input></Popover>
 
     </div>
 

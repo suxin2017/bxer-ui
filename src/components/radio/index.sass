@@ -1,0 +1,56 @@
+@import '../style/index'
+
+.bxer-radio + .bxer-radio
+  margin-left: 20px
+
+.bxer-radio
+  padding-left: 1em
+  position: relative
+
+  &:focus
+    @include input-common-focused
+
+  &[disabled]
+    @include disabled
+
+  &:hover
+    border-color: $primary-color-deeper
+    color: $primary-color-deeper
+
+  $offset-top: .222em
+
+  input[type='radio']
+    display: none
+
+  input[type='radio']:checked + .bxer-radio__status
+    &:after
+      border: 1px solid $primary-color
+
+    &:before
+      content: ' '
+      width: .6em
+      height: .6em
+      left: .222em
+      top: $offset-top + .2em
+      background: $primary-color
+
+
+  &__status
+    vertical-align: middle
+
+    &:after, &:before
+      position: absolute
+      border-radius: 50%
+      box-sizing: border-box
+
+    &:after
+      content: ' '
+      width: 1em
+      height: 1em
+      top: $offset-top
+      left: 0
+      border: 1px solid $disabled-border-color
+
+
+  &__text
+    margin-left: .3em

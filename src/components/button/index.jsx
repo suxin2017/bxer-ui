@@ -6,7 +6,7 @@ import './index.sass'
 import Icon from "../icon";
 
 Button.propTypes = {
-    type: PropTypes.oneOf(["primary", "default"]),
+    type: PropTypes.oneOf(["primary", "minor"]),
     size: PropTypes.oneOf(["sm", "md"]),
     icon: PropTypes.string,
 };
@@ -25,6 +25,7 @@ function Button(props) {
 
     const btnClassNames = classNames('bxer-btn', {
         [`bxer-btn--${size}`]: size,
+        [`bxer-btn--${type}`]:size,
         'bxer-btn--icon':icon && children,
     });
 

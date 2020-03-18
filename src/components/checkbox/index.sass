@@ -1,0 +1,59 @@
+@import '../style/index'
+
+.bxer-checkbox + .bxer-checkbox
+  margin-left: 20px
+
+.bxer-checkbox
+  padding-left: 1em
+  position: relative
+
+  &:focus
+    @include input-common-focused
+
+  &[disabled]
+    @include disabled
+
+  &:hover
+    border-color: $primary-color-deeper
+    color: $primary-color-deeper
+
+  $offset-top: .222em
+
+  input[type='checkbox']
+    display: none
+
+  input[type='checkbox']:checked + .bxer-checkbox__status
+    &:after
+      border: 1px solid $primary-color
+
+    &:before
+      content: ' '
+      width: .35em
+      height: .85em
+      left: .33em
+      border: .15em solid $primary-color
+      border-left: 0
+      border-top: 0
+      border-radius: 2px
+      transform: rotate(45deg)
+      top: $offset-top
+
+
+  &__status
+    vertical-align: middle
+
+    &:after, &:before
+      position: absolute
+      box-sizing: border-box
+
+    &:after
+      content: ' '
+      width: 1em
+      height: 1em
+      top: $offset-top
+      left: 0
+      border: 1px solid $disabled-border-color
+
+
+  &__text
+    margin-left: .3em

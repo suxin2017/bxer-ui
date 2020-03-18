@@ -49,7 +49,7 @@ const typeMap = {
     'up':(triggerNode,popoverNode)=>{
         return [triggerNode.top - popoverNode.height -7,triggerNode.left ];
     },
-    'down':(triggerNode,popoverNode)=>{
+    'bottom':(triggerNode,popoverNode)=>{
         return [triggerNode.bottom + 7,triggerNode.left];
     },
     'left':(triggerNode,popoverNode)=>{

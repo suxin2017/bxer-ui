@@ -1,19 +1,31 @@
 @import '../style/index'
-
-.bxer-btn
+.bxer-btn--primary
   color: #ffffff
-  padding: 0 10px
-  height: 30px
   background-color: $primary-color
   border: 1px solid $primary-color
-  border-radius: 2px
-  vertical-align: middle
-  cursor: pointer
-
   &:hover
     background-color: $primary-color-deep
   &:active
     background-color: $primary-color-deeper
+
+.bxer-btn--minor
+  color: #333
+  background-color: #fff
+  border: 1px solid #bbb
+  &:hover
+    background-color: #f6f6f6
+  &:active
+    background-color: #efefef
+
+.bxer-btn
+  padding: 0 10px
+  height: 30px
+  border-radius: 2px
+  vertical-align: middle
+  cursor: pointer
+
+
+
   &:focus
     outline: none
   &[disabled]

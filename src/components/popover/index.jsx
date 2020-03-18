@@ -5,11 +5,34 @@ import PropTypes from 'prop-types';
 import {addAnimation, capitalize, getCoordinate} from "./util";
 import './index.sass';
 
-Popover.propTypes = {};
+Popover.propTypes = {
+    trigger: PropTypes.oneOf(['click', 'hover', 'contextMenu', 'focus']),
+    placement: PropTypes.oneOf(['up', 'right', 'bottom', 'left']),
+    content: PropTypes.any,
+    onOpen: PropTypes.func,
+    onClose: PropTypes.func,
+    className: PropTypes.string
+};
 
-
+/**
+ * getBoundingClientRect 应该在渲染之后获取
+ *
+ * @param props
+ * @returns {React.DetailedReactHTMLElement<{onMouseOut?: (function(*): void), onMouseOver?: (function(*): void), ref: React.MutableRefObject<null>, onContextMenu?: (function(*): void)}, HTMLElement>}
+ * @constructor
+ */
 function Popover(props) {
-    const {children, trigger = 'click', placement = 'right'} = props;
+    const {
+        children,
+        trigger = 'click',
+        placement = 'right',
+        content,
+        onOpen = () => {
+        },
+        onClose = () => {
+        },
+        className: wrapperClassName
+    } = props;
 
     const triggerNode = React.Children.only(children);
 
@@ -30,13 +53,41 @@ function Popover(props) {
         if (wrapperRef.current === null) {
             wrapperRef.current = document.createElement('div');
             wrapperRef.current.className = classNames('bxer-popover',
-                `bxer-popover__${placement}`
+                `bxer-popover__${placement}`,
+                wrapperClassName
             );
-            wrapperRef.current.addEventListener('click', (e) => {
-                e.stopPropagation()
-            });
+
             document.body.appendChild(wrapperRef.current);
             renderPopover();
+            setTimeout(() => {
+                const [top, left] = getCoordinate(triggerRef.current,
+                    wrapperRef.current,
+                    placement);
+                wrapperRef.current.style.top = `${top}px`;
+                wrapperRef.current.style.left = `${left}px`;
+                wrapperRef.current.style.display = 'none';
+                wrapperRef.current.style.opacity = '0';
+                if (trigger === 'hover') {
+                    const handleEvent = {
+                        onMouseOver: (e) => {
+                            if (timer.current) {
+                                clearTimeout(timer.current)
+                            }
+                            setOn()
+                        },
+                        onMouseOut: (e) => {
+                            timer.current = setTimeout(() => {
+                                    setOff()
+                                }
+                                , 200)
+                        }
+                    };
+
+                    wrapperRef.current.onmouseover = handleEvent.onMouseOver;
+                    wrapperRef.current.onmouseout = handleEvent.onMouseOut;
+                }
+
+            })
         }
 
         return wrapperRef.current;
@@ -44,33 +95,12 @@ function Popover(props) {
 
     function renderPopover() {
         return ReactDOM.render(
-            <div className={'bxer-popover__content'} style={{maxWidth: "200px"}}>{placement}</div>,
-            wrapperRef.current,
-            () => {
-                const [top, left] = getCoordinate(triggerRef.current,
-                    wrapperRef.current, placement);
-                wrapperRef.current.style.top = `${top}px`;
-                wrapperRef.current.style.left = `${left}px`;
-                wrapperRef.current.style.display = 'none';
-                wrapperRef.current.style.opacity = '0';
-                const handleEvent = {
-                    onMouseOver: (e) => {
-                        if (timer.current) {
-                            clearTimeout(timer.current)
-                        }
-                        setOpen(true)
-
-                    },
-                    onMouseOut: (e) => {
-                        timer.current = setTimeout(() => {
-                                setOpen(false)
-                            }
-                            , 200)
-                    }
-                }
-                wrapperRef.current.onmouseover = handleEvent.onMouseOver;
-                wrapperRef.current.onmouseout = handleEvent.onMouseOut;
-            });
+            <div className={'bxer-popover__content'} onClick={(e) => {
+                e.stopPropagation()
+            }} style={{maxWidth: "200px"}}>
+                {content}</div>,
+            wrapperRef.current
+        );
     }
 
     function handleAnimation() {
@@ -95,11 +125,20 @@ function Popover(props) {
     }
 
     function handleWindowClick(e) {
-        if (e.target !== triggerRef.current) {
-            setOpen(false)
+        if (!e.path.includes(wrapperRef.current) && !e.path.includes(triggerRef.current)) {
+            setOff()
         }
     }
 
+    function setOn() {
+        setOpen(true)
+        onOpen()
+    }
+
+    function setOff() {
+        setOpen(false)
+        onClose()
+    }
 
     function handleEventTrigger(eventType) {
         if (eventType === 'hover') {
@@ -108,12 +147,12 @@ function Popover(props) {
                     if (timer.current) {
                         clearTimeout(timer.current)
                     }
-                    setOpen(true)
+                    setOn()
 
                 },
                 onMouseOut: (e) => {
                     timer.current = setTimeout(() => {
-                            setOpen(false)
+                            setOff()
                         }
                         , 200)
                 }
@@ -129,15 +168,18 @@ function Popover(props) {
             return {
                 onContextMenu: (e) => {
                     e.preventDefault();
-                    setOpen(true)
-
+                    setOn()
                 }
             }
         }
 
         return {
             [eventName]: (e) => {
-                setOpen(!open);
+                if (open) {
+                    setOff()
+                } else {
+                    setOn()
+                }
             },
         }
     }
@@ -157,9 +199,19 @@ function Popover(props) {
         handleAnimation();
     }, [open]);
 
-    console.log(handleEventTrigger(trigger))
-    const option = {
+    useEffect(() => {
+        if (props.open) {
+            setOn()
+        } else {
+            setOff()
+        }
+    }, [props.open])
 
+    useEffect(()=>{
+        renderPopover()
+    },[props.content])
+
+    const option = {
         ref: triggerRef,
         ...handleEventTrigger(trigger)
 

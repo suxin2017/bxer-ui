@@ -13,10 +13,16 @@
   padding: 0 8px
   height: 28px
   background-color: #fff
-  vertical-align: middle∂
+  vertical-align: middle
   color: inherit
 
 
 @mixin input-common-focused
   border-color: $primary-color
   outline: none
+
+@mixin input-common-hover
+  color: $primary-color-deeper
+
+body
+  font-size: 14px
