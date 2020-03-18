@@ -25,3 +25,5 @@ yarn-error.log*
 bxer-ui.iml
 
 .idea
+
+lib
