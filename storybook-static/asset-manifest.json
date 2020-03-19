@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.51dce689.chunk.css",
+    "main.js": "/main.cab09a24375180f93d47.bundle.js",
+    "main.css.map": "/static/css/main.51dce689.chunk.css.map",
+    "main.js.map": "/main.cab09a24375180f93d47.bundle.js.map",
+    "runtime~main.js": "/runtime~main.cab09a24375180f93d47.bundle.js",
+    "runtime~main.js.map": "/runtime~main.cab09a24375180f93d47.bundle.js.map",
+    "vendors~main.css": "/static/css/vendors~main.ad6f07ce.chunk.css",
+    "vendors~main.js": "/vendors~main.cab09a24375180f93d47.bundle.js",
+    "vendors~main.css.map": "/static/css/vendors~main.ad6f07ce.chunk.css.map",
+    "vendors~main.js.map": "/vendors~main.cab09a24375180f93d47.bundle.js.map",
+    "iframe.html": "/iframe.html",
+    "precache-manifest.4eee1616f69ca9df470cbfd11452cc8b.js": "/precache-manifest.4eee1616f69ca9df470cbfd11452cc8b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/remixicon.css": "/static/media/remixicon.e5b755b0.woff",
+    "vendors~main.cab09a24375180f93d47.bundle.js.LICENSE.txt": "/vendors~main.cab09a24375180f93d47.bundle.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "runtime~main.cab09a24375180f93d47.bundle.js",
+    "static/css/vendors~main.ad6f07ce.chunk.css",
+    "vendors~main.cab09a24375180f93d47.bundle.js",
+    "static/css/main.51dce689.chunk.css",
+    "main.cab09a24375180f93d47.bundle.js"
+  ]
+}
