@@ -1,0 +1,51 @@
+@import "../style/index"
+
+.bxer-modal.bxer-modal__open
+  display: block
+  animation: open .5s
+
+.bxer-modal.bxer-modal__close
+  animation: open .5s
+
+.bxer-modal
+  display: none
+  transition: all .2s
+
+
+  &__background_drop
+    position: fixed
+    top: 0
+    left: 0
+    background: #e6e6e682
+    bottom: 0
+    right: 0
+
+  &__dialog
+    margin: 100px auto
+    width: 400px
+
+
+  &__header
+    height: 32px
+    line-height: 32px
+    padding: 0 10px
+    background-color: $primary-color
+    color: #fff
+    border-radius: 4px 4px 0 0
+    &-title
+      float: left
+    &-extra
+      float: right
+
+    &:after
+      content: ' '
+      display: block
+      clear: both
+
+    .bxer-icon
+      cursor: pointer
+
+  &__body
+    padding: 10px
+    background-color: #fff
+    border-radius: 0 0 4px 4px
