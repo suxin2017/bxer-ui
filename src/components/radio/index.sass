@@ -8,7 +8,10 @@
   position: relative
 
   &:focus
-    @include input-common-focused
+    outline: none
+    .bxer-radio__status
+      &:after
+        border: 1px solid $primary-color
 
   &[disabled]
     @include disabled

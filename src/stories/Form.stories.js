@@ -11,6 +11,7 @@ import RadioGroup from "../components/radio/radioGroup";
 import Radio from "../components/radio";
 import Option from "../components/select/option";
 import Button from "../components/button";
+import Form from "../components/form/form";
 
 export default {
     component: FormItem,
@@ -19,13 +20,16 @@ export default {
     decorators: [withKnobs]
 }
 
-export const 基本用法 = () => <div style={{width:'300px'}}>
+export const 基本用法 = () => <Form style={{width:'300px'}} onSubmit={action('onSubmit',)}>
     <FormItem wrapperSpan={{span:8}}
               labelSpan={{span:4}}
-              name='输入'><Input/></FormItem>
+              label='输入' dataKey={'input'}><Input/></FormItem>
     <FormItem wrapperSpan={{span:8}}
               labelSpan={{span:4}}
-              name='选择'><Select>
+              label='输入' dataKey={'input'}><Input/></FormItem>
+    <FormItem wrapperSpan={{span:8}}
+              labelSpan={{span:4}}
+              label='选择'  dataKey={'select'}><Select>
         <Option value="苹果">苹果</Option>
         <Option value="西瓜">西瓜</Option>
         <Option value="西红柿">西红柿</Option>
@@ -33,22 +37,21 @@ export const 基本用法 = () => <div style={{width:'300px'}}>
     </Select></FormItem>
     <FormItem wrapperSpan={{span:8}}
               labelSpan={{span:4}}
-              name='复选框'><CheckboxGroup>
+              label='复选框'  dataKey={'checkout'}><CheckboxGroup>
         <Checkbox value={'test'}>北京</Checkbox>
         <Checkbox value={'test1'}>上海</Checkbox>
     </CheckboxGroup></FormItem>
     <FormItem wrapperSpan={{span:8}}
               labelSpan={{span:4}}
-              name='单选'><RadioGroup>
+              label='单选'  dataKey={'radio'}><RadioGroup>
         <Radio value={'test'}>北京</Radio>
         <Radio value={'test1'}>上海</Radio>
     </RadioGroup></FormItem>
     <FormItem wrapperSpan={{span:8}}
               labelSpan={{span:4}}
-              name='单选'>
-        <Button >确定</Button>
-        <Button type={'minor'}>取消</Button>
-
+              label='单选'>
+            <Button htmltype={'submit'}>确定</Button>
+            <Button type={'minor'}>取消</Button>
     </FormItem>
-</div>
+</Form>
 

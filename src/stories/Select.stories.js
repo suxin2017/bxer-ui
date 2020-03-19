@@ -13,8 +13,8 @@ export default {
 }
 
 export const 基本用法 = () => <Select>
-    <Option value={'123'}/>
-    <Option value={'456'}/>
-    <Option value={'789'}/>
+    <Option value={'123'}>123</Option>
+    <Option value={'456'}>456</Option>
+    <Option value={'789'}>789</Option>
 </Select>
 

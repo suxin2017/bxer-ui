@@ -5,10 +5,12 @@ import Icon from "../icon";
 import classNames from 'classnames';
 import './index.sass'
 
-Select.propTypes = {};
+DatePicker.propTypes = {};
 
 
-function Select(props) {
+
+
+function DatePicker(props) {
 
     /**
      *
@@ -21,45 +23,38 @@ function Select(props) {
      */
     const contentRef = useRef(null);
 
-    const {children, onChange} = props;
+    const {children} = props;
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState('');
-    const [showTitle, setShowTitle] = useState('');
-    const prefix = 'bxer-select';
+    const [value,setValue] = useState('');
+    const [showTitle,setShowTitle] = useState('');
+    const prefix = 'bxer-date-picker';
     const selectClassName = classNames(prefix,
         {[`${prefix}__open`]: open});
 
-    const options = React.Children.map(children, (option, index) => {
-        const {key: optionKey, value: optionValue,} = option.props;
-        return React.cloneElement(option, {
-            selected: optionValue === value,
-            onClick: (e) => {
+    const options = React.Children.map(children,(option,index)=>{
+        const {key:optionKey,value:optionValue,} = option.props;
+        return React.cloneElement(option,{
+            selected: optionValue=== value,
+            onClick:(e)=>{
                 const {dataset} = e.currentTarget;
                 const {value} = dataset;
-                setValue(value);
-                if (onChange) {
-                    onChange(value);
-                }
+                setValue(value)
                 setOpen(false)
             }
         })
     });
 
 
-    useEffect(() => {
-        React.Children.forEach(children, (option) => {
-            const {key: optionKey, value: optionValue, children} = option.props;
-            if (optionValue === value) {
+
+    useEffect(()=>{
+        React.Children.forEach(children,(option)=>{
+            const {key:optionKey,value:optionValue,children} = option.props;
+            console.log(optionValue,value)
+            if(optionValue === value){
                 setShowTitle(children)
             }
         })
-    }, [open, value]);
-
-    useEffect(() => {
-        if (value !== props.value) {
-            setValue(props.value)
-        }
-    }, [props.value]);
+    },[open])
 
 
     return (
@@ -82,7 +77,7 @@ function Select(props) {
                 </ul>}
             >
                 <div className={`${prefix}__content`}>
-                    <div>{showTitle}</div>
+                    <div>请选择日期</div>
                     <Icon type={'arrow-left-s-fill'}></Icon>
                 </div>
             </Popover>
@@ -90,4 +85,4 @@ function Select(props) {
     );
 }
 
-export default Select;
+export default DatePicker;

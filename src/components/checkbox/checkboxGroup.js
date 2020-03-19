@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 CheckboxGroup.propTypes = {
 
@@ -22,11 +22,19 @@ function CheckboxGroup(props) {
                    const activeIndex = activeKeys.indexOf(value);
                    activeKeys.splice(activeIndex,1)
                }
-                setActiveKeys([...activeKeys])
-
+                   setActiveKeys([...activeKeys])
+               if(props.onChange){
+                   props.onChange([...activeKeys]);
+               }
             },
         })
     });
+
+   useEffect(()=>{
+       if(props.value&&activeKeys!==props.value){
+           setActiveKeys(props.value)
+       }
+   },[props.value])
 
     return (
         <div className={"bxer-radio-group"}>{injectChildren}</div>

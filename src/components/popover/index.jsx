@@ -59,6 +59,7 @@ function Popover(props) {
 
             document.body.appendChild(wrapperRef.current);
             renderPopover();
+            // 需要等待子节点渲染完才能获取其宽度等信息所以放在下一个task中执行
             setTimeout(() => {
                 const [top, left] = getCoordinate(triggerRef.current,
                     wrapperRef.current,

@@ -22,11 +22,11 @@ function Checkbox(props) {
     }, [props.checked]);
 
     return (
-        <label className={radioClassName} onChange={(e) => {
-            setChecked(true);
-            onChange(e);
-        }}>
-            <input type={'checkbox'} value={value} checked={checked}/>
+        <label className={radioClassName} tabIndex={checked ? -1 : 0}>
+            <input type={'checkbox'}  onChange={(e) => {
+                setChecked(true);
+                onChange(e);
+            }} value={value} checked={checked}/>
             <span className={`${prifix}__status`}></span>
             <span className={`${prifix}__text`}>{children}</span>
         </label>

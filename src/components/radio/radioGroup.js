@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
 RadioGroup.propTypes = {
@@ -8,7 +8,7 @@ RadioGroup.propTypes = {
 function RadioGroup(props) {
 
     const [activeKey, setActiveKey] = useState(null);
-    const {children} = props;
+    const {children,onChange} = props;
 
    const injectChildren= React.Children.map(children,(Radio,index)=>{
         if(!React.isValidElement(Radio))return;
@@ -17,10 +17,19 @@ function RadioGroup(props) {
             checked:_value === activeKey,
             onChange:(e)=>{
                const {value }= e.target;
-               setActiveKey(value)
+               if(onChange){
+                   onChange(value,e)
+               }
+                   setActiveKey(value)
             },
         })
     });
+
+   useEffect(()=>{
+       if(activeKey!=props.value){
+           setActiveKey(props.value)
+       }
+   },[props.value])
 
     return (
         <div className={"bxer-radio-group"}>{injectChildren}</div>

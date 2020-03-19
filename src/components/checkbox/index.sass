@@ -6,9 +6,12 @@
 .bxer-checkbox
   padding-left: 1em
   position: relative
-
   &:focus
-    @include input-common-focused
+    outline: none
+
+    .bxer-checkbox__status
+      &:after
+        border: 1px solid $primary-color
 
   &[disabled]
     @include disabled
@@ -22,7 +25,10 @@
   input[type='checkbox']
     display: none
 
+
+
   input[type='checkbox']:checked + .bxer-checkbox__status
+
     &:after
       border: 1px solid $primary-color
 

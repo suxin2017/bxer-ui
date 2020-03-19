@@ -22,11 +22,11 @@ function Radio(props) {
     }, [props.checked]);
 
     return (
-        <label className={radioClassName} onChange={(e) => {
-            setChecked(true);
-            onChange(e);
-        }}>
-            <input type={'radio'} value={value} checked={checked}/>
+        <label className={radioClassName} tabIndex={checked?-1:0}>
+            <input  onChange={(e) => {
+                setChecked(true);
+                onChange(e);
+            }} type={'radio'} value={value} checked={checked}/>
             <span className="bxer-radio__status"></span>
             <span className="bxer-radio__text">{children}</span>
         </label>

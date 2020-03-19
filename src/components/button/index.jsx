@@ -20,7 +20,7 @@ Button.defaultProps = {
  * 按钮组件
  */
 function Button(props) {
-    const {type, size, icon, children, ...other} = props;
+    const {type, size, icon, children,htmltype='button', ...other} = props;
 
 
     const btnClassNames = classNames('bxer-btn', {
@@ -31,7 +31,7 @@ function Button(props) {
 
 
     return (
-        <button className={btnClassNames} {...other}>
+        <button  className={btnClassNames} {...other} type={htmltype} >
             {icon && <Icon type={icon}/>}
             <span>{children}</span>
         </button>
