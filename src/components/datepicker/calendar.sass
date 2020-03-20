@@ -3,13 +3,24 @@
 .bxer-calendar
   margin: 0 -10px
   padding: 4px 10px
+  font-size: 12px
 
-  &:hover
-    background-color: $disabled-bg-color
+  &__body
+    &-row
 
-  &__selected
-    color: $primary-color
+    &-col__prev, &-col__next
+      color: $disabled-color
+      cursor: not-allowed
 
-  &__content
-    display: inline-block
-    width: calc(100% - 20px)
+    &-col
+      text-align: center
+      padding: 2px 5px
+      cursor: pointer
+
+      &:hover
+        background-color: $disabled-bg-color
+        border-radius: 3px
+
+    &-col__selected
+      background-color: $disabled-bg-color
+      border-radius: 3px

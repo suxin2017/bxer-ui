@@ -4,6 +4,7 @@ import Popover from "../popover";
 import Icon from "../icon";
 import classNames from 'classnames';
 import './index.sass'
+import Calendar from "./calendar";
 
 DatePicker.propTypes = {};
 
@@ -72,12 +73,14 @@ function DatePicker(props) {
                 onClose={() => {
                     setOpen(false)
                 }}
-                content={<ul className={'bxer-option-group'} ref={contentRef}>
-                    {options}
-                </ul>}
+                content={<Calendar onChange={(dateItem)=>{
+                    const {year,month,day} =dateItem;
+                    setShowTitle(`${year}-${month}-${day}`)
+                    setOpen(false)
+                }}/>}
             >
                 <div className={`${prefix}__content`}>
-                    <div>请选择日期</div>
+                    <div>{showTitle || '请选择日期'}</div>
                     <Icon type={'arrow-left-s-fill'}></Icon>
                 </div>
             </Popover>

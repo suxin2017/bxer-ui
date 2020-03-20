@@ -1,0 +1,43 @@
+@import "../style/index"
+
+@mixin gAnimation()
+  @for $i from 1 through 3
+    .bxer-spin__circle-#{$i}
+      animation: zoom .8s #{$i * .16}s infinite
+
+
+@include gAnimation
+
+@keyframes zoom
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(.6)
+  100%
+    transform: scale(1)
+
+.bxer-spin
+  position: relative
+  &__loading
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    width: 30px
+    height: 10px
+    top: 0
+    margin: auto
+    z-index: 1
+
+  &__circle-group
+    display: flex
+
+  &__circle
+    border-radius: 50%
+    width: 10px
+    height: 10px
+    background-color: $primary-color
+
+  &__content
+    background-color: #f7f7f7
+    opacity: .6

@@ -98,7 +98,7 @@ function Popover(props) {
         return ReactDOM.render(
             <div className={'bxer-popover__content'} onClick={(e) => {
                 e.stopPropagation()
-            }} style={{maxWidth: "200px"}}>
+            }} >
                 {content}</div>,
             wrapperRef.current
         );

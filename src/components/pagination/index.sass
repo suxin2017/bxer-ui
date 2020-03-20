@@ -1,0 +1,28 @@
+@import "../style/index"
+
+$width_and_height: 30px
+
+.bxer-pagination
+  list-style: none
+
+  li
+    display: inline
+    padding: 5px 10px
+    text-align: center
+    line-height: $width_and_height
+    border: 1px solid $common-border-color
+    border-radius: 3px
+    user-select: none
+
+  li:not(&__disable)
+    cursor: pointer
+
+  &__selected
+    background-color: $primary-color
+    color: $primary-color-light
+
+  &__disable
+    background-color: $disabled-bg-color
+    color: $disabled-color
+    cursor: not-allowed
+    pointer-events: none
