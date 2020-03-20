@@ -6,6 +6,9 @@ import './index.sass'
 import Icon from "../icon";
 
 Button.propTypes = {
+    /**
+     类型
+     */
     type: PropTypes.oneOf(["primary", "minor"]),
     size: PropTypes.oneOf(["sm", "md"]),
     icon: PropTypes.string,
