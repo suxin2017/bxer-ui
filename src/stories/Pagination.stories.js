@@ -12,4 +12,16 @@ export default {
 }
 
 
-export const 基本用法 = () => <Pagination />;
+export const 基本用法 = () => <div>
+    <Pagination dataTotal={10} />
+    <Pagination dataTotal={20} />
+    <Pagination dataTotal={30} />
+    <Pagination dataTotal={40} />
+    <Pagination dataTotal={50} />
+    <Pagination dataTotal={60} />
+    <Pagination dataTotal={70} />
+    <Pagination dataTotal={80} />
+    <Pagination dataTotal={90} />
+    <Pagination dataTotal={100} />
+
+</div>;
