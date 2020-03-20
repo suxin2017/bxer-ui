@@ -19,23 +19,21 @@ function compileSass() {
         .pipe(dest("lib/"));
 }
 
-function repaceSass2Css(){
-    const replace = require('gulp-replace');
-
-    return src(['src/**/*.js','src/**/*.jsx','!src/**/*.test.js'])
-        .pipe(replace('.sass', '.css'))
-        .pipe(dest('lib'))
-}
 
 function complie() {
     const babel = require('gulp-babel');
+    const replace = require('gulp-replace');
 
-        return src(['src/**/*.js','src/**/*.jsx','!src/**/*.test.js'])
-            .pipe(babel({
-                presets: ['@babel/env','@babel/react']
-            }))
-            .pipe(dest('lib/'))
+    return src(['src/**/*.js','src/**/*.jsx','!src/**/*.test.js'])
+        .pipe(babel({
+            presets: ['@babel/env','@babel/react']
+
+        }))
+        .pipe(replace('.sass','.css'))
+
+        .pipe(dest('lib/'))
 }
 
 
-exports.default = series(cleanCache,parallel(compileSass,series(complie,repaceSass2Css)));
+exports.default = series(cleanCache,
+    series(compileSass,complie));

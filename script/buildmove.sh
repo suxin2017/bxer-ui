@@ -1,0 +1,1 @@
+mv ./storybook-static/static/media ./storybook-static/static/css/static/media

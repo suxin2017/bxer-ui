@@ -1,4 +1,5 @@
 const path = require('path');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     stories: ['../src/**/*.stories.(js|mdx)'],
@@ -11,5 +12,9 @@ module.exports = {
         '@storybook/addon-docs',
         '@storybook/addon-viewport/register'
     ],
-
+    // 代码分析
+    // webpackFinal: (config, { configType }) => {
+    //     config.plugins.push(new BundleAnalyzerPlugin());
+    //     return config;
+    // },
 };
