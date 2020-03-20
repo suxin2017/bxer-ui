@@ -11,7 +11,7 @@ Modal.propTypes = {
 
 function Modal(props) {
 
-    const {lock,children,subCount=0,onOpen=()=>{}} = props;
+    const {title,children,subCount=0,onOpen=()=>{}} = props;
     const [open, setOpen] = useState(false);
    const containerRef=  useRef();
 
@@ -47,7 +47,7 @@ function Modal(props) {
                         <div className={classNames(
                             'bxer-modal__header'
                         )}>
-                            <div className={'bxer-modal__header-title'}>header</div>
+                            <div className={'bxer-modal__header-title'}>{title}</div>
                             <div className={'bxer-modal__header-extra'}>
                                 <Icon onClick={()=>{
                                     props.onClose();
