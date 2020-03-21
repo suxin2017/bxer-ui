@@ -1,1 +1,2 @@
-mv ./storybook-static/static/media ./storybook-static/static/css/static/media
+mkdir -p ../docs/static/css/static
+mv  ../docs/static/media ../docs/static/css/static/media
