@@ -1,0 +1,28 @@
+@import "../style/index"
+
+.bxer-message
+  position: fixed
+  left: 50%
+  top: 10%
+  padding: 5px 15px
+  transform: translateX(-50%)
+  box-shadow: 0px 1px 5px #d4d4d4
+  border-radius: 2px
+  &__icon
+    font-size: 14px
+    margin-right: 5px
+
+  &__icon-success
+    color: $success-color
+  &__icon-error
+    color: $error-color
+  &__icon-info
+    color: $info-color
+  &__content
+    vertical-align: middle
+
+.bxer-message-open
+  animation-fill-mode: forwards
+  animation: open .1s
+.bxer-message-close
+  display: none
