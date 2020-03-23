@@ -19,36 +19,37 @@
     width: 0px
     height: 0px
 
-$border_width: 7px
+$border_width: 5px
 $triangle_border: $border_width solid transparent
 $triangle: $border_width solid #fff
+$box-shadow-blur: 5px
 
 @mixin common_border
   border: $triangle_border
 
 .bxer-popover__right
   .bxer-popover__content
-    box-shadow: -2px 0px 7px 0px rgba(0, 0, 0, 0.25)
+    box-shadow: -1px 0px $box-shadow-blur 0px rgba(0, 0, 0, 0.25)
 
   &:after
     top: 4px
-    left: -14px
+    left: - $border_width * 2
     @include common_border
     border-right: $border_width solid #fff
 
 .bxer-popover__left
   .bxer-popover__content
-    box-shadow: 2px 0px 7px 0px rgba(0, 0, 0, 0.25)
+    box-shadow: 1px 0px $box-shadow-blur 0px rgba(0, 0, 0, 0.25)
 
   &:after
     top: 4px
-    right: -14px
+    right: - $border_width * 2
     @include common_border
     border-left: $border_width solid #fff
 
 .bxer-popover__up
   .bxer-popover__content
-    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.25)
+    box-shadow: 0px 1px $box-shadow-blur 0px rgba(0, 0, 0, 0.25)
 
   &:after
     left: 4px
@@ -57,17 +58,17 @@ $triangle: $border_width solid #fff
 
 .bxer-popover__bottom
   .bxer-popover__content
-    box-shadow: 0px -2px 7px 0px rgba(0, 0, 0, 0.25)
+    box-shadow: 0px -1px $box-shadow-blur 0px rgba(0, 0, 0, 0.25)
 
   &:after
     left: 4px
-    top: -14px
+    top: - $border_width * 2
     @include common_border
     border-bottom: $border_width solid #fff
 
 
 .bxer-popover__content
-  padding: 7px 10px
+  padding: 4px 10px
   background: #fff
   border-radius: 2px
   word-wrap: break-word
