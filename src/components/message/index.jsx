@@ -40,9 +40,11 @@ let render = (props) => {
     const messageWrapper = document.createElement('div');
     document.body.appendChild(messageWrapper)
     const messageQueue = [];
+    let isOpen = false;
 
-    const task = (props,flag) => {
+    const task = (props, flag) => {
         const {duration = 500, ...otherProps} = props;
+        isOpen = true;
 
         // 打开
         ReactDOM.render(<Message {...otherProps}/>, messageWrapper);
@@ -53,30 +55,22 @@ let render = (props) => {
             setTimeout(() => {
                 // 下一个任务
                 let head = messageQueue.shift();
-                if(flag){
+                if (flag) {
                     head = messageQueue.shift();
                 }
-                head && render(head, true);
+                isOpen = false;
+
+                head && render(head);
             }, duration)
         }, duration);
     }
 
-    render = (nextProps, isCore) => {
-        const queueIsEmpty = messageQueue.length === 0;
-        if (!isCore) {
-            messageQueue.push(nextProps);
-            console.log('点击执行', nextProps,messageQueue)
+    render = (nextProps) => {
+        if (isOpen) {
+            return messageQueue.push(nextProps);
         }
 
-        // 第一次启动非内部调用
-        if (!isCore && queueIsEmpty) {
-            task(nextProps,true);
-        }
-
-        // 内部调用
-        if (isCore) {
-            task(nextProps);
-        }
+        task(nextProps);
 
     };
 
