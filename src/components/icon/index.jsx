@@ -6,8 +6,8 @@ import './index.sass';
 
 Icon.propTypes = {
     type:PropTypes.string.isRequired,
-
 };
+
 
 function Icon({type,className,...other}) {
     const iconClassName = classNames(

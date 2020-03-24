@@ -7,30 +7,30 @@ import Icon from "../icon";
 
 Button.propTypes = {
     /**
-     类型
+      两种类型
      */
     type: PropTypes.oneOf(["primary", "minor"]),
-    size: PropTypes.oneOf(["sm", "md"]),
+    /**
+     * 图标
+     */
     icon: PropTypes.string,
 };
 
 Button.defaultProps = {
     type: 'primary',
-    size: 'md'
 }
 
 /**
  * 按钮组件
  */
 function Button(props) {
-    const {type, size, icon, children,htmltype='button', ...other} = props;
+    const {type, icon, children,className,htmltype='button', ...other} = props;
 
 
     const btnClassNames = classNames('bxer-btn', {
-        [`bxer-btn--${size}`]: size,
-        [`bxer-btn--${type}`]:size,
+        [`bxer-btn--${type}`]:type,
         'bxer-btn--icon':icon && children,
-    });
+    },className);
 
 
     return (
