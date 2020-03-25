@@ -4,8 +4,10 @@
   margin-left: 20px
 
 .bxer-checkbox
-  padding-left: 1em
+  padding-left: 14px
   position: relative
+  user-select: none
+
   &:focus
     outline: none
 
@@ -20,15 +22,13 @@
     border-color: $primary-color-deeper
     color: $primary-color-deeper
 
-  $offset-top: .222em
+  $offset-top: 2.8px
 
   input[type='checkbox']
     display: none
 
 
-
-  input[type='checkbox']:checked + .bxer-checkbox__status
-
+  &__status[data-checked='true']
     &:after
       border: 1px solid $primary-color
 
@@ -44,6 +44,19 @@
       transform: rotate(45deg)
       top: $offset-top
 
+  &__status[data-indeterminate='true']
+    &:after
+      border: 1px solid $primary-color
+
+    &:before
+      content: ' '
+      width: 8px
+      height: 8px
+      left: 2px
+      background-color: #13c2c2
+      border-radius: 2px
+      top: 5px
+      transform: rotate(0deg)
 
   &__status
     vertical-align: middle

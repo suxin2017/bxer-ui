@@ -14,6 +14,6 @@ export default {
 }
 
 export const 基本用法 = ()=><Tabs >
-    <TabPane key={1} tabName={'tab1'}>tab1</TabPane>
-    <TabPane key={2} tabName={'tab2'}>tab2</TabPane>
+    <TabPane value={1} tabName={'tab1'}>tab1</TabPane>
+    <TabPane value={2} tabName={'tab2'}>tab2</TabPane>
 </Tabs>

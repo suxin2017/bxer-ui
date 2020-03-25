@@ -13,12 +13,12 @@ function Tabs(props) {
     const tabHeaders = [];
     const injectChildren = React.Children.map(children,child => {
         const {tabName} = child.props;
-        const {key} = child;
+        const {value} = child;
         tabHeaders.push({
-            tabName,key
+            tabName,value
         })
         const childProps = {
-            active:activeKey === key
+            active:activeKey === value
         }
         return React.cloneElement(child,childProps)
     });
@@ -29,7 +29,6 @@ function Tabs(props) {
             <div className="bxer-tabs__header">
                 <ul className="bxer-tabs__header__menu">
                     {tabHeaders.map(({key,tabName})=>{
-                        console.log(key,activeKey)
                         return <li key={key}
                                    className={
                             classNames('bxer-tabs__header__menu-item',{

@@ -7,9 +7,7 @@ module.exports = {
         '@storybook/addon-actions',
         '@storybook/addon-links',
         '@storybook/addon-knobs/register',
-        '@storybook/addon-storysource',
         '@storybook/addon-docs',
-        '@storybook/addon-viewport/register'
     ],
     // 代码分析
     // webpackFinal: (config, { configType }) => {
