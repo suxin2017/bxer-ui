@@ -10,7 +10,18 @@ export default {
     decorators: [withKnobs]
 }
 
-export const test = ()=> <Calendar />
+export const test = ()=>{
+    const year = text('currentYear','2019');
+    const month = text('currentMonth','10');
+    return <div>
+        年：{year}<br/>
+        月: {month}
+        <Calendar date={{
+            currentYear:year,
+            currentMonth:month,
+        }}/>
+    </div>
+}
 export const 基本用法 = () => <DatePicker/>
 
 

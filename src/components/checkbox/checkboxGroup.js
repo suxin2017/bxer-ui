@@ -11,6 +11,9 @@ CheckboxGroup.propTypes = {
     onChange:PropTypes.func
 };
 
+/**
+ * 一组复选框
+ */
 function CheckboxGroup(props) {
 
     const [activeKeys, setActiveKeys] = useState([]);

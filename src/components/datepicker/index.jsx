@@ -6,11 +6,14 @@ import classNames from 'classnames';
 import './index.sass'
 import Calendar from "./calendar";
 
-DatePicker.propTypes = {};
+DatePicker.propTypes = {
+    onChange:PropTypes.func
+};
 
 
-
-
+/**
+ * 下拉日期选择
+ */
 function DatePicker(props) {
 
     /**
@@ -24,7 +27,7 @@ function DatePicker(props) {
      */
     const contentRef = useRef(null);
 
-    const {children} = props;
+    const {children,onChange} = props;
     const [open, setOpen] = useState(false);
     const [value,setValue] = useState('');
     const [showTitle,setShowTitle] = useState('');
@@ -39,7 +42,8 @@ function DatePicker(props) {
             onClick:(e)=>{
                 const {dataset} = e.currentTarget;
                 const {value} = dataset;
-                setValue(value)
+                setValue(value);
+                onChange(value);
                 setOpen(false)
             }
         })
