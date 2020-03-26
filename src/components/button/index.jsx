@@ -9,7 +9,7 @@ Button.propTypes = {
     /**
       两种类型
      */
-    type: PropTypes.oneOf(["primary", "minor"]),
+    type: PropTypes.oneOf(["primary", "minor","ghost"]),
     /**
      * 图标
      */

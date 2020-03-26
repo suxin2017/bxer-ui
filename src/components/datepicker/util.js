@@ -3,7 +3,7 @@
 export function getDates(currentYear,currentMonth){
     const dates = [];
     let _date;
-
+    console.log(currentYear,currentMonth)
     // 这个月第一天
     _date = new Date(currentYear,currentMonth-1,1);
     // day = 0 代表周日
@@ -16,7 +16,7 @@ export function getDates(currentYear,currentMonth){
         for(let i = dayInWeek - 1 - 1;i>=0;i--){
             dates.push({
                 year:_date.getFullYear(),
-                month:_date.getMonth(),
+                month:_date.getMonth()+1,
                 day:prevMonthDaysCount - i,
                 type:'prev'
             })
@@ -28,7 +28,7 @@ export function getDates(currentYear,currentMonth){
     for (let i = 1; i<=currentMonthDaysCount;i++ ){
         dates.push({
             year:_date.getFullYear(),
-            month:_date.getMonth(),
+            month:_date.getMonth()+1,
             day: i,
             type:'current'
         })
@@ -40,7 +40,7 @@ export function getDates(currentYear,currentMonth){
         for (let i = 1; i<= 7 - nextMonthDayInWeek + 1;i++ ){
             dates.push({
                 year:_date.getFullYear(),
-                month:_date.getMonth(),
+                month:_date.getMonth()+1,
                 day: i,
                 type:'next'
             })
@@ -51,10 +51,12 @@ export function getDates(currentYear,currentMonth){
 
 
 
-export function isEquel(prevItem,nextItem){
+export function isEqual(prevItem, nextItem){
     if(prevItem == null || nextItem ==null)return false;
     if(prevItem.year !== nextItem.year)return false;
     if(prevItem.month !== nextItem.month)return false;
     if(prevItem.day !== nextItem.day)return false;
     return true;
 }
+
+export const defaultDate = new Date();

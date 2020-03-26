@@ -5,67 +5,89 @@ import Icon from "../icon";
 import classNames from 'classnames';
 import './index.sass'
 import Calendar from "./calendar";
+import DatepickerHeader, {change_Type} from "./datepickerHeader";
+import {defaultDate} from "./util";
+import {isEmptyObject} from "../util";
 
 DatePicker.propTypes = {
-    onChange:PropTypes.func
+    /**
+     * 当前选中日期
+     * 配合form
+     */
+    value: PropTypes.shape({
+        year: PropTypes.number,
+        month: PropTypes.number,
+    }),
+    /**
+     * 当前选中后修改
+     */
+    onChange: PropTypes.func
 };
-
+DatePicker.defaultProps = {
+    currentDate: {
+        year: defaultDate.getFullYear(),
+        month: defaultDate.getMonth(),
+    },
+    onChange: (selectedDate) => {
+    },
+}
 
 /**
  * 下拉日期选择
  */
 function DatePicker(props) {
 
-    /**
-     *
-     * @type {{current: HTMLElement}}
-     */
-    const selectRef = useRef(null);
-    /**
-     *
-     * @type {{current: HTMLElement}}
-     */
-    const contentRef = useRef(null);
+    const [currentDate, setCurrentDate] = useState({
+        year: defaultDate.getFullYear(),
+        month: defaultDate.getMonth() + 1,
+    });
 
-    const {children,onChange} = props;
+    const [selectedDate, setSelectedDate] = useState({});
+
+    const {value,onChange: propOnChange} = props;
     const [open, setOpen] = useState(false);
-    const [value,setValue] = useState('');
-    const [showTitle,setShowTitle] = useState('');
+    const [showTitle, setShowTitle] = useState('');
     const prefix = 'bxer-date-picker';
     const selectClassName = classNames(prefix,
         {[`${prefix}__open`]: open});
 
-    const options = React.Children.map(children,(option,index)=>{
-        const {key:optionKey,value:optionValue,} = option.props;
-        return React.cloneElement(option,{
-            selected: optionValue=== value,
-            onClick:(e)=>{
-                const {dataset} = e.currentTarget;
-                const {value} = dataset;
-                setValue(value);
-                onChange(value);
-                setOpen(false)
-            }
-        })
-    });
-
-
+    useEffect(() => {
+        if (!isEmptyObject(selectedDate)) {
+            const {year, month, day} = selectedDate;
+            setShowTitle(`${year}-${month}-${day}`)
+        }
+    }, [selectedDate]);
 
     useEffect(()=>{
-        React.Children.forEach(children,(option)=>{
-            const {key:optionKey,value:optionValue,children} = option.props;
-            console.log(optionValue,value)
-            if(optionValue === value){
-                setShowTitle(children)
-            }
+        if(!isEmptyObject(value)){
+            setCurrentDate(value);
+            setSelectedDate(value);
+        }
+    },[value])
+
+
+    function handleHeaderChange(type) {
+        const {year, month} = currentDate;
+        const currDateObj = new Date(year, month)
+        if (type == change_Type.left) {
+            // 当前月份加一天
+            currDateObj.setMonth(currDateObj.getMonth() - 1 - 1);
+        } else {
+            // 当前月份减一天
+            currDateObj.setMonth(currDateObj.getMonth() + 1 - 1);
+        }
+        setCurrentDate({
+            year: currDateObj.getFullYear(),
+            month: currDateObj.getMonth() + 1,
         })
-    },[open])
+    }
 
 
     return (
-        <div className={selectClassName} ref={selectRef} onClick={() => {
+        <div className={selectClassName} onClick={() => {
             setOpen(!open)
         }}>
+
             <Popover
                 className={`${prefix}__popover`}
                 trigger={"click"}
@@ -77,11 +99,19 @@ function DatePicker(props) {
                 onClose={() => {
                     setOpen(false)
                 }}
-                content={<Calendar onChange={(dateItem)=>{
-                    const {year,month,day} =dateItem;
-                    setShowTitle(`${year}-${month}-${day}`)
-                    setOpen(false)
-                }}/>}
+                content={<div>
+                    <DatepickerHeader
+                        onChange={handleHeaderChange}
+                        currentDate={currentDate}/>
+                    <Calendar
+                        selectedDate={selectedDate}
+                        currentDate={currentDate}
+                        onChange={(dateItem) => {
+                            propOnChange(dateItem);
+                            setSelectedDate(dateItem);
+                            setOpen(false)
+                        }}/>
+                </div>}
             >
                 <div className={`${prefix}__content`}>
                     <div>{showTitle || '请选择日期'}</div>

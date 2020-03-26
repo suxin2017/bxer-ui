@@ -4,48 +4,87 @@ import classNames from 'classnames';
 import './calendar.sass'
 import Icon from "../icon";
 import {date} from "@storybook/addon-knobs";
-import {getDates, isEquel} from "./util";
+import {getDates, isEqual,defaultDate} from "./util";
 
 Calendar.propTypes = {
     /**
-     * 当前日期
-     *
+     * 当前选中日期
      */
-    date: PropTypes.string,
+    selectedDate: PropTypes.shape({
+        year:PropTypes.number,
+        month:PropTypes.number,
+        day:PropTypes.number,
+    }),
+
+    /**
+     * 当前日期
+     * 用于生成日期列表
+     * 默认是当前日期的年和月
+     */
+    currentDate: PropTypes.shape({
+        year:PropTypes.number,
+        month:PropTypes.number,
+    }),
+
+    /**
+     * 选中日期后的回调
+     * (selectedData)=>{}
+     */
+    onChange:PropTypes.func,
+
 };
 
 
-const defaultDate = new Date();
+Calendar.defaultProps = {
+    currentDate:{
+        year: defaultDate.getFullYear(),
+        month: defaultDate.getMonth(),
+    },
+    onChange:(selectedDate)=>{},
+}
 
 /**
  * 日期选择
+ * 选中日期不可控
  */
 function Calendar(props) {
     const {
-        date: propsCurrentDay,
-        onChange = () => {
-        }
+        date: propData,
+        currentDate:propCurrentDate,
+        selectedDate:propSelectedDate,
+        onChange
     } = props;
 
-    const [currentDay, setCurrentDay] = useState({
-        currentYear: defaultDate.getFullYear(),
-        currentMonth: defaultDate.getMonth(),
-    });
+    /**
+     * 当前选中日期
+     */
+    const [selectedDate, setSelectedDate] = useState({});
 
+    /**
+     * 展示的日期
+     */
     const [dates, setDates] = useState([]);
+
+    /**
+     * 星期
+     * @type {string[]}
+     */
     let weekTh = ['一', '二', '三', '四', '五', '六', '日'];
-    useEffect(() => {
-        if(currentDay){
-            setDates(getDates(currentDay.currentYear, currentDay.currentMonth))
+
+
+    // props 的当前日期变化
+    useEffect(()=>{
+        if(propCurrentDate){
+            setDates(getDates(propCurrentDate.year, propCurrentDate.month))
         }
-
-    }, [currentDay])
+    },[propCurrentDate]);
 
 
     useEffect(() => {
-        setCurrentDay(propsCurrentDay);
-    }, [propsCurrentDay]);
-
+        if (propSelectedDate) {
+            setSelectedDate(propSelectedDate);
+        }
+    }, [propSelectedDate]);
 
     return <table className={'bxer-calendar'}>
         <thead className={'bxer-calendar__head'}>
@@ -61,7 +100,7 @@ function Calendar(props) {
                         return <td
                             onClick={() => {
                                 if (item.type === 'current') {
-                                    setCurrentDay(item)
+                                    setSelectedDate(item)
                                     onChange(item)
                                 }
                             }}
@@ -69,10 +108,10 @@ function Calendar(props) {
                                 `bxer-calendar__body-col__${item.type}`,
                                 {
                                     'bxer-calendar__body-col__selected':
-                                        isEquel(currentDay, item)
+                                        isEqual(selectedDate, item)
                                 }
                             )}
-                            key={index}>{item.day}</td>
+                            key={`${item.year+item.month+item.day}`}>{item.day}</td>
                     })}
                 </tr>
             })
