@@ -7,7 +7,7 @@ import './index.sass'
 import Calendar from "./calendar";
 import DatepickerHeader, {change_Type} from "./datepickerHeader";
 import {defaultDate} from "./util";
-import {isEmptyObject} from "../util";
+import {isEmptyObject} from "../util/type";
 
 DatePicker.propTypes = {
     /**

@@ -1,3 +1,5 @@
+@import "../style/index"
+
 $common-line-height: 30px
 
 .bxer-form__item + .bxer-form__item
@@ -6,5 +8,19 @@ $common-line-height: 30px
   &-label
     text-align: right
     line-height: $common-line-height
+    &__request
+      color: $error-color
+      margin-right: 3px
   &-content
     line-height: $common-line-height
+  &-tip
+    position: absolute
+    font-size: 12px
+    color: #aaa
+    &__text
+      vertical-align: middle
+    &__icon
+      margin-right:  3px
+  &-tip-error
+    color: $error-color
+

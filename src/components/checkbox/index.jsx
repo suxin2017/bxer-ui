@@ -63,9 +63,9 @@ function Checkbox(props) {
         >
             <input type={'checkbox'} onChange={(e) => {
                 setChecked(!checked);
-                onChange(!checked);
+                onChange(e);
             }}
-                   value={checked}
+                   value={value}
                    checked={checked}
                    indeterminate={indeterminate.toString()}/>
             <span

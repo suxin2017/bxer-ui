@@ -1,3 +1,5 @@
+import {isArray, isRegExp} from "../util/type";
+
 const pathRegex = /\[(\d*)\]/ig;
 const getPath = (keyStr) => keyStr.replace(pathRegex, '.$1').split(".");
 
@@ -6,13 +8,13 @@ const getPath = (keyStr) => keyStr.replace(pathRegex, '.$1').split(".");
  *
  * @param {object} obj
  * @param {string} keyStr
- * @param defaultValue
+ * @param [defaultValue]
  * 只考虑
  *  a.b.c
  *  a[0].b.c
  *  这种情况
  */
-export function get(obj, keyStr,defaultValue) {
+export function get(obj, keyStr, defaultValue) {
     let result = undefined;
     if (obj == null) {
         result = undefined;
@@ -38,13 +40,14 @@ export function set(obj, keyStr, value) {
     let _obj = obj || {};
     let header = _obj;
     let index = 0;
-    while (index < path.length-1) {
+    console.log(path)
+    while (index < path.length - 1) {
         if (_obj[path[index]] == null) {
-            const nextIsNumber =  !isNaN(Number(path[index+1]));
-            if(nextIsNumber){
-                _obj[path[index]]  = [];
-            }else{
-                _obj[path[index]]  = {};
+            const nextIsNumber = !isNaN(Number(path[index + 1]));
+            if (nextIsNumber) {
+                _obj[path[index]] = [];
+            } else {
+                _obj[path[index]] = {};
             }
 
         }
@@ -54,8 +57,48 @@ export function set(obj, keyStr, value) {
     return Object.assign({}, header)
 }
 
-// console.log(JSON.stringify(set({},'a.b.c.d[1]',{})));
-// console.log(JSON.stringify(set(null,'a[0].b.c','test')));
-//
-// console.log(getPath('a[0].b.c'))
+/**
+ *
+ * @param rules
+ * @param value
+ * @returns {*}
+ */
+export function verifyRules(rules, value) {
+    if (isArray(rules)) {
+        for (let i = 0; i < rules.length; i++) {
+            const {rule} = rules[i];
+            // 正则时候
+            if (isRegExp(rule)) {
+                if (!rule.test(value)) {
+                    return rules[i]
+                }
+            } else {
+                // 函数的时候
+                if (!rule(value)) {
+                    return rules[i]
+                }
+            }
 
+        }
+    }
+}
+
+/**
+ * 校验所有数据
+ * @param data
+ * @param rules
+ * @returns {{}}
+ */
+export function versifyData(data, rules) {
+    const verifies = {}
+
+    for (let key of Object.keys(rules)) {
+        if (Object.prototype.hasOwnProperty.call(rules, key)) {
+            const rule = rules[key];
+            const ruleData = data[key];
+            const verify = verifyRules(rule, ruleData)
+            verifies[key] = verify;
+        }
+    }
+    return verifies;
+}
