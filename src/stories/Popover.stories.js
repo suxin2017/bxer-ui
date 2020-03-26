@@ -12,7 +12,7 @@ export default {
 }
 
 export const 基本用法 = ()=> <div style={{
-   margin:'200px'
+   margin:'50px'
 }}>
         <div style={{margin:'20px'}}>
             <Popover placement={'up'}   content={'up'}><span >up</span></Popover>

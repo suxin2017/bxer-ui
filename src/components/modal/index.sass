@@ -1,13 +1,27 @@
 @import "../style/index"
 
+@keyframes open-modal
+  0%
+    transform: translateY(-10px)
+  100%
+    transform: translateY(0)
+
+@keyframes open-modal
+  0%
+    transform: translateY(-10px)
+  100%
+    transform: translateY(0)
+
 .bxer-modal.bxer-modal__open
   display: block
   animation: open .5s
+  animation-fill-mode: forwards
 
-
+  .bxer-modal__dialog
+    animation: open-modal .5s
 
 .bxer-modal.bxer-modal__close
-  animation: open .5s
+  display: none
 
 .bxer-modal
   display: none
@@ -25,6 +39,7 @@
   &__dialog
     margin: 100px auto
     width: 400px
+    position: relative
 
 
   &__header
@@ -34,8 +49,10 @@
     background-color: $primary-color
     color: #fff
     border-radius: 4px 4px 0 0
+
     &-title
       float: left
+
     &-extra
       float: right
 

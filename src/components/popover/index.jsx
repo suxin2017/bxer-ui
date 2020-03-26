@@ -6,20 +6,43 @@ import {addAnimation, capitalize, getCoordinate} from "./util";
 import './index.sass';
 
 Popover.propTypes = {
+    /**
+     * 目标事件类型
+     */
     trigger: PropTypes.oneOf(['click', 'hover', 'contextMenu', 'focus']),
+    /**
+     * 提示未知
+     */
     placement: PropTypes.oneOf(['up', 'right', 'bottom', 'left']),
-    content: PropTypes.any,
+    /**
+     * 渲染内容
+     */
+    content: PropTypes.node,
+    /**
+     * 打开回调
+     */
     onOpen: PropTypes.func,
+    /**
+     * 关闭回调
+     */
     onClose: PropTypes.func,
+    /**
+     * 样式类名
+     */
     className: PropTypes.string
 };
 
+Popover.defaultProps={
+    trigger:'click',
+    placement : 'right',
+    onOpen : () => {
+    },
+    onClose : () => {
+    },
+};
 /**
- * getBoundingClientRect 应该在渲染之后获取
+ * 模拟浮动框
  *
- * @param props
- * @returns {React.DetailedReactHTMLElement<{onMouseOut?: (function(*): void), onMouseOver?: (function(*): void), ref: React.MutableRefObject<null>, onContextMenu?: (function(*): void)}, HTMLElement>}
- * @constructor
  */
 function Popover(props) {
     const {

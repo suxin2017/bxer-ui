@@ -4,8 +4,18 @@ import classNames from 'classnames';
 import './index.sass'
 
 Radio.propTypes = {
+    /**
+     * 单选组对应的key
+     */
     value: PropTypes.string,
+    /**
+     * 是否勾选
+     */
     checked: PropTypes.bool,
+    /**
+     * 勾选回调
+     */
+    onChange: PropTypes.func
 };
 
 function Radio(props) {

@@ -6,10 +6,25 @@ import PropTypes from 'prop-types';
 import LayoutConfig from "../LayoutConfigContext";
 
 Col.propTypes = {
+    /**
+     * 不指定屏幕宽度
+     */
     span: PropTypes.number,
+    /**
+     * >= 1200px
+     */
     lg: PropTypes.number,
+    /**
+     *  >= 992px
+     */
     md: PropTypes.number,
+    /**
+     * >= 768px
+     */
     sm: PropTypes.number,
+    /**
+     *  < 768px
+     */
     xs: PropTypes.number
 };
 

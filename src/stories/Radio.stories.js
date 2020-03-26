@@ -11,14 +11,14 @@ export default {
     excludeStories: /.*Data$/,
     decorators: [withKnobs]
 }
-
-export const 基本用法 = () => <Radio
-    value={'xiaoxin'}>蜡笔小新</Radio>
-
 export const 组 = () => {
-    return <RadioGroup><Radio
+    return <RadioGroup onChange={action('选择回调')}><Radio
         value={'xiaoxin1'}>小新</Radio>
         <Radio
             value={'xiaoxin2'}>蜡笔</Radio>
     </RadioGroup>
 }
+
+export const 单个Radio = () => <Radio
+    value={'xiaoxin'}>蜡笔小新</Radio>
+

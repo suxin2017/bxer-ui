@@ -5,7 +5,14 @@ import PropTypes from 'prop-types';
 
 
 Input.propTypes = {
-
+    /**
+     * 输入框的值
+     */
+    value:PropTypes.string,
+    /**
+     * 输入框改变的回调
+     */
+    onChange:PropTypes.func
 };
 
 function Input(props) {

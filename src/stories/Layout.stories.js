@@ -44,7 +44,7 @@ export const 通过gutter带间距 = ()=>{
 }
 
 export const 流布局 = ()=>{
-    return <Row gutter={32} fluid>
+    return <Row gutter={8} fluid>
         <Col >
             <SpanData color={gray}>span-8</SpanData></Col>
         <Col >

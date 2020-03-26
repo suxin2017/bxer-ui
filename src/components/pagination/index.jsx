@@ -1,44 +1,62 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './index.sass'
 import Icon from "../icon";
 
 Pagination.propTypes = {
-    pageSize:PropTypes.number,
-    dataTotal:PropTypes.number.isRequired,
+    /**
+     * 每个包含多少条
+     */
+    pageSize: PropTypes.number,
+    /**
+     * 数据总条数
+     */
+    dataTotal: PropTypes.number.isRequired,
+    /**
+     * 当前页 大于1
+     */
+    current: PropTypes.number,
+    /**
+     * 页面改变回调
+     */
+    onChange: PropTypes.func,
 };
 
 Pagination.defaultProps = {
-    pageSize:10,
+    pageSize: 10,
 };
 
 function Pagination(props) {
-    const {pageSize, dataTotal} = props;
+    const {pageSize, dataTotal,onChange:propOnChange,current: propCurrent} = props;
     const [current, setCurrent] = useState(1);
-    const maxDisplayPage = 5;
 
-    const leftLimit = 2;
-    const rightLimit = 2;
     const maxShowLimit = 3;
 
+    useEffect(() => {
+        if(propCurrent){
+            setCurrent(propCurrent);
+        }
+    }, [propCurrent]);
 
     function onChange(e) {
         if (typeof e === 'number') {
             setCurrent(e);
+            propOnChange(e)
         } else {
             const {dataset} = e.target;
             const {value} = dataset;
             const transValue = Number(value);
             if (!isNaN(transValue)) {
                 setCurrent(transValue)
+                propOnChange(transValue)
             }
         }
     }
 
     function getPageItem(dataTotal, pageSize) {
         const pagesLength = Math.ceil(dataTotal / pageSize)
-        if(isNaN(pagesLength))return;
+        if (isNaN(pagesLength)) return;
         const lis = [];
         const start = current - 1;
         const end = start + maxShowLimit;
@@ -98,7 +116,7 @@ function Pagination(props) {
             for (; i < 2 + maxShowLimit && i <= pagesLength; i++) {
                 lis.push(createLi(i % 3, i))
             }
-            if(pagesLength - i + 1 >= 2){
+            if (pagesLength - i + 1 >= 2) {
                 lis.push(nextDot);
             }
         } else if (end >= pagesLength) {
@@ -117,6 +135,8 @@ function Pagination(props) {
         lis.push(next);
         return lis
     }
+
+
     return (
         <ul className={'bxer-pagination'} onClick={(e) => {
             onChange(e)

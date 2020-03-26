@@ -6,7 +6,13 @@ import './index.sass';
 import Icon from "../icon";
 
 Message.propTypes = {
+    /**
+     * 消息
+     */
     message: PropTypes.string,
+    /**
+     * 类型
+     */
     type: PropTypes.oneOf(['success', 'error', 'info'])
 };
 
@@ -16,6 +22,12 @@ const messageIconMap = {
     info: <Icon type={'information-fill'}/>
 }
 
+/**
+ *
+ * 消息提醒
+ * 具体用法请看示例代码
+ *
+ */
 function Message({message, type, closed}) {
     const iconClassName = classNames('bxer-message__icon', `bxer-message__icon-${type}`);
     const messageClassName = classNames('bxer-message', {
@@ -78,7 +90,10 @@ let render = (props) => {
     render(props);
 };
 
-
+/**
+ * 消息提醒
+ * @type {{success: message.success, error: message.error, info: message.info}}
+ */
 export const message = {
     success: (message) => {
         console.log(123)

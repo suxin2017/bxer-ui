@@ -39,7 +39,7 @@ export const 嵌套 = () => {
         }
         }
                title={'header'}
-               subCount={1}
+               hasChildModal
         >
             <Modal open={open1} onClose={() => {
                 setOpen1(false)

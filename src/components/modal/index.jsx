@@ -5,13 +5,29 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './index.sass'
 import Icon from "../icon";
-Modal.propTypes = {
 
+Modal.propTypes = {
+    /**
+     * 是否显示
+     */
+    open:PropTypes.bool,
+    /**
+     * 关闭回调
+     */
+    onClose:PropTypes.func,
+    /**
+     * 打开回调
+     */
+    onOpen:PropTypes.func,
+    /**
+     * 子modal个数
+     */
+    hasChildModal:PropTypes.bool
 };
 
 function Modal(props) {
 
-    const {title,children,subCount=0,onOpen=()=>{}} = props;
+    const {title,children,hasChildModal=false,open:propOpen,onOpen=()=>{},onClose=()=>{}} = props;
     const [open, setOpen] = useState(false);
    const containerRef=  useRef();
 
@@ -23,9 +39,13 @@ function Modal(props) {
 
 
     useEffect(()=>{
-        setOpen(props.open);
-        onOpen(open)
-    },[props.open])
+        setOpen(propOpen);
+        if(propOpen){
+            onOpen(propOpen)
+        }else{
+            onClose(propOpen)
+        }
+    },[propOpen])
 
     if(containerRef.current){
         return ReactDOM.createPortal( <div className={classNames(
@@ -42,7 +62,7 @@ function Modal(props) {
                     <div className={classNames(
                         'bxer-modal__dialog'
                     )}
-                         style={ {transform: subCount && `translateY(-${20*subCount}px)`}}
+                         style={  {top: hasChildModal && `-20px`}}
                     >
                         <div className={classNames(
                             'bxer-modal__header'
@@ -67,7 +87,7 @@ function Modal(props) {
     }
 
 
-    return null
+    return <></>
 }
 
 export default Modal;

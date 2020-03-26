@@ -6,13 +6,19 @@ import PropTypes from 'prop-types';
 import LayoutConfig from "../LayoutConfigContext";
 
 Row.propTypes = {
+    /**
+     * col 之间的间距
+     */
     gutter:PropTypes.number,
+    /**
+     * 流布局 不需要指定col的span
+     */
     fluid:PropTypes.bool,
 };
 
 /**
  * #### Row
- *   - gutter 间距
+ *   gutter 间距
  *   -
  *
  * #### Col
