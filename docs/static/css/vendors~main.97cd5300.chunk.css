@@ -10,12 +10,12 @@
 */
 @font-face {
   font-family: "remixicon";
-  src: url(static/media/remixicon.3b5b9292.eot); /* IE9*/
-  src: url(static/media/remixicon.3b5b9292.eot#iefix) format('embedded-opentype'), 
-  url(static/media/remixicon.76414508.woff2) format("woff2"),
-  url(static/media/remixicon.e5b755b0.woff) format("woff"),
-  url(static/media/remixicon.c0d34ad3.ttf) format('truetype'), 
-  url(static/media/remixicon.d0ac4bc4.svg#remixicon) format('svg'); /* iOS 4.1- */
+  src: url(../../static/media/remixicon.3b5b9292.eot); /* IE9*/
+  src: url(../../static/media/remixicon.3b5b9292.eot#iefix) format('embedded-opentype'), 
+  url(../../static/media/remixicon.76414508.woff2) format("woff2"),
+  url(../../static/media/remixicon.e5b755b0.woff) format("woff"),
+  url(../../static/media/remixicon.c0d34ad3.ttf) format('truetype'), 
+  url(../../static/media/remixicon.d0ac4bc4.svg#remixicon) format('svg'); /* iOS 4.1- */
   font-display: swap;
 }
 
@@ -2101,4 +2101,4 @@
 
 
 
-/*# sourceMappingURL=vendors~main.ad6f07ce.chunk.css.map*/
+/*# sourceMappingURL=vendors~main.97cd5300.chunk.css.map*/

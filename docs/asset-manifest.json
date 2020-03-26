@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.cfaf24b9.chunk.css",
-    "main.js": "/main.88677ead1191c0040c1c.bundle.js",
-    "main.css.map": "/static/css/main.cfaf24b9.chunk.css.map",
-    "main.js.map": "/main.88677ead1191c0040c1c.bundle.js.map",
-    "runtime~main.js": "/runtime~main.88677ead1191c0040c1c.bundle.js",
-    "runtime~main.js.map": "/runtime~main.88677ead1191c0040c1c.bundle.js.map",
-    "vendors~main.css": "/static/css/vendors~main.ad6f07ce.chunk.css",
-    "vendors~main.js": "/vendors~main.88677ead1191c0040c1c.bundle.js",
-    "vendors~main.css.map": "/static/css/vendors~main.ad6f07ce.chunk.css.map",
-    "vendors~main.js.map": "/vendors~main.88677ead1191c0040c1c.bundle.js.map",
-    "iframe.html": "/iframe.html",
-    "precache-manifest.85314c7655e6be758fb6d13e2a1add1c.js": "/precache-manifest.85314c7655e6be758fb6d13e2a1add1c.js",
-    "service-worker.js": "/service-worker.js",
-    "static/media/remixicon.css": "/static/media/remixicon.e5b755b0.woff",
-    "vendors~main.88677ead1191c0040c1c.bundle.js.LICENSE.txt": "/vendors~main.88677ead1191c0040c1c.bundle.js.LICENSE.txt"
+    "main.css": "./static/css/main.5347088a.chunk.css",
+    "main.js": "./main.4147c07eb6880fdf7045.bundle.js",
+    "main.css.map": "./static/css/main.5347088a.chunk.css.map",
+    "main.js.map": "./main.4147c07eb6880fdf7045.bundle.js.map",
+    "runtime~main.js": "./runtime~main.4147c07eb6880fdf7045.bundle.js",
+    "runtime~main.js.map": "./runtime~main.4147c07eb6880fdf7045.bundle.js.map",
+    "vendors~main.css": "./static/css/vendors~main.97cd5300.chunk.css",
+    "vendors~main.js": "./vendors~main.4147c07eb6880fdf7045.bundle.js",
+    "vendors~main.css.map": "./static/css/vendors~main.97cd5300.chunk.css.map",
+    "vendors~main.js.map": "./vendors~main.4147c07eb6880fdf7045.bundle.js.map",
+    "iframe.html": "./iframe.html",
+    "precache-manifest.e217bcb64dc1e3eb0ff8fa2cdb040c1b.js": "./precache-manifest.e217bcb64dc1e3eb0ff8fa2cdb040c1b.js",
+    "service-worker.js": "./service-worker.js",
+    "static/media/remixicon.css": "./static/media/remixicon.e5b755b0.woff",
+    "vendors~main.4147c07eb6880fdf7045.bundle.js.LICENSE.txt": "./vendors~main.4147c07eb6880fdf7045.bundle.js.LICENSE.txt"
   },
   "entrypoints": [
-    "runtime~main.88677ead1191c0040c1c.bundle.js",
-    "static/css/vendors~main.ad6f07ce.chunk.css",
-    "vendors~main.88677ead1191c0040c1c.bundle.js",
-    "static/css/main.cfaf24b9.chunk.css",
-    "main.88677ead1191c0040c1c.bundle.js"
+    "runtime~main.4147c07eb6880fdf7045.bundle.js",
+    "static/css/vendors~main.97cd5300.chunk.css",
+    "vendors~main.4147c07eb6880fdf7045.bundle.js",
+    "static/css/main.5347088a.chunk.css",
+    "main.4147c07eb6880fdf7045.bundle.js"
   ]
 }
