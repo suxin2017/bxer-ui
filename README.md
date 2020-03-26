@@ -9,13 +9,16 @@ npm install bxer-ui
 
 ### 二次开发
 
-```js
+```
+
 npm install 
 
 // 启动
+
 npm run storybook
 
 // 编译
+
 npm run complite
 
 ```

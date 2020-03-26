@@ -24,10 +24,6 @@ DatePicker.propTypes = {
     onChange: PropTypes.func
 };
 DatePicker.defaultProps = {
-    currentDate: {
-        year: defaultDate.getFullYear(),
-        month: defaultDate.getMonth(),
-    },
     onChange: (selectedDate) => {
     },
 }
