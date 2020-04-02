@@ -22,14 +22,36 @@ npm run complite
 
 ```
 
+### 包含组件
+- ✅ Button 
+- ✅ CheckboxGroup
+- ✅ DatePicker 单个日期选择
+- ✅ FileUpload
+- ✅ Form
+- ✅ Icon
+- ✅ Input
+- ✅ Layout
+- ✅ Message
+- ✅ Modal
+- ✅ Pagination
+- ✅ Popover
+- ✅ RadioGroup
+- ✅ SearchInput
+- ✅ Select
+- ✅ Spin
+- ✅ Table
+- ✅ Tree
+
+
+
 ### 未来计划
 
-- 第一阶段 (完成)
-  - 把所有基础组件基本开发完毕（基本开发完毕的意思是样式完成，显示完成）
+- 第一阶段 ✅
+  - 把所有基础组件基本开发完毕✅
 - 第二阶段
-  - 把所有基础组件功能完善（完成）
-  - 文档（完成）
-  - <span style='color:red'>new </span> 还需要一些组件
+  - 把所有基础组件功能完善✅
+  - 文档 ✅
+  - <span style="color:red">new </span> 还需要一些组件
 - 第三阶段
   - 把测试覆盖提升上来
 - 第四阶段
