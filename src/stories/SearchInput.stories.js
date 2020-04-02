@@ -18,7 +18,7 @@ export default {
  */
 export const 示例 = ()=>{
     return  <div>
-       <SearchInput/>
+       <SearchInput onChange={action('搜索值改变')} onSearch={action('搜索回调')}/>
 
     </div>
 };

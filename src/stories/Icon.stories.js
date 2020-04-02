@@ -1,6 +1,5 @@
 import React from "react";
-import {action} from "@storybook/addon-actions";
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
+import { withKnobs, text} from "@storybook/addon-knobs";
 
 import Icon from "../components/icon";
 
@@ -11,4 +10,4 @@ export default {
     decorators: [withKnobs]
 }
 
-export const 基本用法 = ()=><Icon type={text('type',"home-line")}></Icon>
+export const 基本用法 = ()=> <Icon type={text('type',"home-line")}></Icon>

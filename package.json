@@ -8,7 +8,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "remixicon": "^2.3.0",
-    "sinon": "^9.0.1"
+    "sinon": "^9.0.1",
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -5,7 +5,14 @@ import './option.sass'
 import Icon from "../icon";
 
 Option.propTypes = {
-
+    /**
+     * 是否被选中
+     */
+    selected:PropTypes.bool,
+    /**
+     *
+     */
+    value:PropTypes.string,
 };
 
 function Option(props) {
@@ -21,7 +28,7 @@ function Option(props) {
             <div className={"bxer-option__content"}>
                 {children||key||value}
             </div>
-            {selected && <Icon type={'check-line'} ></Icon>}
+            {selected && <Icon type={'check-line'} />}
         </li>
     );
 }

@@ -5,7 +5,16 @@ import Icon from "../icon";
 import classNames from 'classnames';
 import './index.sass'
 
-Select.propTypes = {};
+Select.propTypes = {
+    /**
+     * 匹配的option 的值
+     */
+    value: PropTypes.string,
+    /**
+     * 回调改变
+     */
+    onChange:PropTypes.func
+};
 
 
 function Select(props) {
@@ -29,32 +38,40 @@ function Select(props) {
     const selectClassName = classNames(prefix,
         {[`${prefix}__open`]: open});
 
-    const options = React.Children.map(children, (option, index) => {
-        const {key: optionKey, value: optionValue,} = option.props;
+    function changeValue(value) {
+        setValue(value);
+        if (onChange) {
+            onChange(value);
+        }
+    }
+
+    const options = React.Children.map(children, (option) => {
+        const {props:oProps} = option;
+        const {value: optionValue=''} = oProps;
         return React.cloneElement(option, {
             selected: optionValue === value,
             onClick: (e) => {
                 const {dataset} = e.currentTarget;
                 const {value} = dataset;
-                setValue(value);
-                if (onChange) {
-                    onChange(value);
-                }
+                changeValue(value);
                 setOpen(false)
             }
         })
     });
 
 
+    // 通过value 设置展示的内容
     useEffect(() => {
         React.Children.forEach(children, (option) => {
-            const {key: optionKey, value: optionValue, children} = option.props;
+            const {props:oProps} = option;
+            const { value: optionValue='', children} = oProps;
             if (optionValue === value) {
                 setShowTitle(children)
             }
         })
-    }, [open, value]);
+    }, [ value]);
 
+    // 监听prop 的 value
     useEffect(() => {
         if (value !== props.value) {
             setValue(props.value)
@@ -83,7 +100,7 @@ function Select(props) {
             >
                 <div className={`${prefix}__content`}>
                     <div>{showTitle}</div>
-                    <Icon type={'arrow-left-s-fill'}></Icon>
+                    <Icon type={'arrow-left-s-fill'}/>
                 </div>
             </Popover>
         </div>

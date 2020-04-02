@@ -5,6 +5,10 @@ import 'remixicon/fonts/remixicon.css'
 import './index.sass';
 
 Icon.propTypes = {
+    /**
+     * 配置详情参考开源字体库 remixicon
+     * (https://remixicon.cn/)[https://remixicon.cn/]
+     */
     type:PropTypes.string.isRequired,
 };
 
@@ -16,7 +20,7 @@ function Icon({type,className,...other}) {
         className
     )
     return (
-        <i className={iconClassName} {...other}></i>
+        <i className={iconClassName} {...other}/>
     );
 }
 

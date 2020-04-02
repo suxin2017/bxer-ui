@@ -6,9 +6,10 @@ import Radio from "../components/radio";
 import RadioGroup from "../components/radio/radioGroup";
 
 export default {
-    component: Radio,
-    title: 'Radio',
+    component: RadioGroup,
+    title: 'RadioGroup',
     excludeStories: /.*Data$/,
+    subcomponents:{Radio},
     decorators: [withKnobs]
 }
 export const 组 = () => {

@@ -20,7 +20,7 @@ Modal.propTypes = {
      */
     onOpen:PropTypes.func,
     /**
-     * 子modal个数
+     * 是否有子modal
      */
     hasChildModal:PropTypes.bool
 };
