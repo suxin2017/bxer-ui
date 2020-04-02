@@ -1,14 +1,22 @@
 {
   "name": "bxer-ui",
   "version": "0.1.1",
+  "author": "bxer <yishidixiashang@gmail.com>",
+  "description": "react basic components",
+  "keywords": ["react","react compontent","component","learn"],
+  "bugs": {
+    "gitee": "https://gitee.com/bxer/bxer-ui",
+    "github": "https://github.com/AngelName/bxer-ui"
+  },
+  "homepage": "https://angelname.github.io/bxer-ui/",
   "main": "./lib/components/index",
+  "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "remixicon": "^2.3.0",
-    "sinon": "^9.0.1",
     "prop-types": "latest"
   },
   "scripts": {
@@ -36,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "sinon": "^9.0.1",
     "@storybook/addon-actions": "^5.3.17",
     "@storybook/addon-docs": "^5.3.17",
     "@storybook/addon-knobs": "^5.3.17",
