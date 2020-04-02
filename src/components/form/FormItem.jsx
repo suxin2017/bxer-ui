@@ -57,20 +57,16 @@ function FormItem(props, ref) {
 
 
 
-    const injectChildProp = childLength == 1 ? {
+    const injectChildProp = childLength === 1 ? {
         value,
         onChange: (value, ...args) => {
             setValue(value);
-            const {
-                onChange = () => {
-                }
-            } = children.props;
             props.onChange && props.onChange(value)
             setVerify(verifyRules(rules, value))
         }
     } : {};
 
-    const injectChild = childLength == 1 ? React.Children.map(children, child => {
+    const injectChild = childLength === 1 ? React.Children.map(children, child => {
         return React.cloneElement(child, injectChildProp)
     }) : children;
 
@@ -78,7 +74,7 @@ function FormItem(props, ref) {
         if (props.value !== value) {
             setValue(props.value)
         }
-    }, [props.value])
+    }, [props.value]);
 
     useEffect(() => {
         setVerify(propVerify)

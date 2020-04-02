@@ -18,6 +18,7 @@
 
 .bxer-spin
   position: relative
+  // 动画部分
   &__loading
     position: absolute
     bottom: 0
@@ -28,6 +29,12 @@
     top: 0
     margin: auto
     z-index: 1
+  &__loading-close
+    background-color: red
+    display: none
+
+  &__loading-open
+    display: block
 
   &__circle-group
     display: flex
@@ -38,6 +45,12 @@
     height: 10px
     background-color: $primary-color
 
+  // 子元素的遮盖
   &__content
-    background-color: #f7f7f7
-    opacity: .6
+    &-open
+      background-color: #f7f7f7
+      opacity: .6
+
+    &-close
+      opacity: 1
+      background-color: initial
