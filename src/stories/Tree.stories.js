@@ -66,7 +66,7 @@ export const 带Icon = () => {
     </Tree>;
 }
 
-export const 目录 = () => {
+export const 自定义icon = () => {
     return <Tree style={treeStyle} data={data}
                  icon={(dataItem) => {
                      if (dataItem.children) {
