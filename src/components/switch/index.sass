@@ -1,0 +1,35 @@
+@import "../style/index"
+
+.bxer-switch
+
+  height: 20px
+  width: 42px
+  background-color: $primary-color
+  border-radius: 100px
+  padding: 1px
+  position: relative
+  outline: none
+  transition: background-color .2s
+
+  &:focus
+    box-shadow: 0 0 0 2px #ececec
+  &:active
+    box-shadow: 0 0 0 2px #9cd6d6
+  &-left
+    background-color: #d8d8d8
+    .bxer-switch__round
+      left: 2px
+  &-right
+    .bxer-switch__round
+      left: 22px
+
+  &__round
+    background-color: #fff
+    width: 18px
+    height: 18px
+    border-radius: 50%
+    transition: left .2s
+    position: absolute
+
+
+
