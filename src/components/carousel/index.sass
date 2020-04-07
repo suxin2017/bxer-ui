@@ -1,0 +1,32 @@
+.carousel
+  position: relative
+  overflow: hidden
+  &__tool
+    width: 30px
+    height: 30px
+    border-radius: 20px
+    text-align: center
+    font-size: 26px
+    border: 1px solid #eaeaea
+    color: #eaeaea
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    z-index: 1
+    cursor: pointer
+    & .bxer-icon
+      vertical-align: baseline
+
+  &__tool-right
+    right: 10px
+  &__tool-left
+    left: 10px
+
+
+  &-item
+    float: left
+
+
+  &__container
+    transition: all 1s
+

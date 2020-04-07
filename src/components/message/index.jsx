@@ -95,23 +95,22 @@ let render = (props) => {
  * @type {{success: message.success, error: message.error, info: message.info}}
  */
 export const message = {
-    success: (message) => {
-        console.log(123)
+    success: (message,duration) => {
         render({
             message: message,
-            type: 'success',
+            type: 'success',duration
         })
     },
-    info: (message) => {
+    info: (message,duration) => {
         render({
             message: message,
-            type: 'info',
+            type: 'info',duration
         })
     },
-    error: (message) => {
+    error: (message,duration) => {
         render({
             message: message,
-            type: 'error',
+            type: 'error',duration
         })
     }
 }
