@@ -3,7 +3,12 @@
   "version": "0.1.2",
   "author": "bxer <yishidixiashang@gmail.com>",
   "description": "react basic components",
-  "keywords": ["react","react compontent","component","learn"],
+  "keywords": [
+    "react",
+    "react compontent",
+    "component",
+    "learn"
+  ],
   "bugs": {
     "gitee": "https://gitee.com/bxer/bxer-ui",
     "github": "https://github.com/AngelName/bxer-ui"
@@ -13,19 +18,19 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
+    "prop-types": "latest",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "remixicon": "^2.3.0",
-    "prop-types": "latest"
+    "remixicon": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public -o docs",
+    "storybook": "start-storybook -p 9009 -s public  --docs",
+    "build-storybook": "build-storybook -s public -o docs  --docs",
     "complite": "gulp"
   },
   "eslintConfig": {
@@ -44,7 +49,6 @@
     ]
   },
   "devDependencies": {
-    "sinon": "^9.0.1",
     "@storybook/addon-actions": "^5.3.17",
     "@storybook/addon-docs": "^5.3.17",
     "@storybook/addon-knobs": "^5.3.17",
@@ -59,6 +63,7 @@
     "@testing-library/react": "^10.0.1",
     "@testing-library/user-event": "^10.0.0",
     "autoprefixer": "latest",
+    "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "gulp": "^4.0.2",
@@ -69,6 +74,8 @@
     "gulp-sass": "^4.0.2",
     "node-sass": "^4.13.1",
     "postcss-less": "^3.1.4",
+    "react-is": "^16.13.1",
+    "sinon": "^9.0.1",
     "webpack-bundle-analyzer": "^3.6.1"
   },
   "files": [

@@ -1,13 +1,13 @@
-import { create } from '@storybook/theming/create';
+import { create } from "@storybook/theming/create";
 
 export default create({
-    base: 'light',
+  base: "light",
 
-    // Typography
-    fontBase: '"Open Sans", sans-serif',
-    fontCode: 'monospace',
+  // Typography
+  fontBase: '"Open Sans", sans-serif',
+  fontCode: "monospace",
 
-    brandTitle: 'Bxer ui',
-    // brandUrl: 'https://.com',
-    // brandImage: 'https://placehold.it/350x150',
+  brandTitle: "Bxer ui",
+  brandUrl: "/",
+  // brandImage: 'https://placehold.it/350x150',
 });

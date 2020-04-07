@@ -1,58 +1,58 @@
-import { addons } from '@storybook/addons';
+import { addons } from "@storybook/addons";
 import bxerTheme from "./bxerTheme";
 
 addons.setConfig({
-    /**
-     * show story component as full screen
-     * @type {Boolean}
-     */
-    isFullscreen: false,
+  /**
+   * show story component as full screen
+   * @type {Boolean}
+   */
+  isFullscreen: false,
 
-    /**
-     * display panel that shows a list of stories
-     * @type {Boolean}
-     */
-    showNav: true,
+  /**
+   * display panel that shows a list of stories
+   * @type {Boolean}
+   */
+  showNav: true,
 
-    /**
-     * display panel that shows addon configurations
-     * @type {Boolean}
-     */
-    showPanel: true,
+  /**
+   * display panel that shows addon configurations
+   * @type {Boolean}
+   */
+  showPanel: true,
 
-    /**
-     * where to show the addon panel
-     * @type {('bottom'|'right')}
-     */
-    panelPosition: 'bottom',
+  /**
+   * where to show the addon panel
+   * @type {('bottom'|'right')}
+   */
+  panelPosition: "bottom",
 
-    /**
-     * sidebar tree animations
-     * @type {Boolean}
-     */
-    sidebarAnimations: true,
+  /**
+   * sidebar tree animations
+   * @type {Boolean}
+   */
+  sidebarAnimations: false,
 
-    /**
-     * enable/disable shortcuts
-     * @type {Boolean}
-     */
-    enableShortcuts: true,
+  /**
+   * enable/disable shortcuts
+   * @type {Boolean}
+   */
+  enableShortcuts: false,
 
-    /**
-     * show/hide tool bar
-     * @type {Boolean}
-     */
-    isToolshown: true,
+  /**
+   * show/hide tool bar
+   * @type {Boolean}
+   */
+  isToolshown: true,
 
-    /**
-     * theme storybook, see link below
-     */
-    theme: undefined,
+  /**
+   * theme storybook, see link below
+   */
+  theme: undefined,
 
-    /**
-     * id to select an addon panel
-     * @type {String}
-     */
-    selectedPanel: 'storybook/docs',
+  /**
+   * id to select an addon panel
+   * @type {String}
+   */
+  selectedPanel: "storybook/docs",
 });
-addons.setConfig({theme:bxerTheme})
+addons.setConfig({ theme: bxerTheme });

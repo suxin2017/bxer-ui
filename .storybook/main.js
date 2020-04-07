@@ -1,19 +1,13 @@
-const path = require('path');
-
 module.exports = {
-    stories: ['../src/**/*.stories.(js|mdx)'],
-    addons: [
-        '@storybook/preset-create-react-app',
-        '@storybook/addon-actions',
-        '@storybook/addon-links',
-        '@storybook/addon-knobs/register',
-        '@storybook/addon-docs',
-    ],
-    // 代码分析
-    // webpackFinal: (config, { configType }) => {
-    //     const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-    //
-    //     config.plugins.push(new BundleAnalyzerPlugin());
-    //     return config;
-    // },
+  stories: [
+    "../src/stories/Introduce.stories.mdx",
+    "../src/**/*.stories.(js|mdx)",
+  ],
+  addons: [
+    "@storybook/preset-create-react-app",
+    "@storybook/addon-actions",
+    "@storybook/addon-links",
+    "@storybook/addon-knobs/register",
+    "@storybook/addon-docs",
+  ],
 };
