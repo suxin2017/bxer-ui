@@ -68,3 +68,15 @@ export const 自定义全部 = () => {
         </CheckboxGroup>
     </div>
 };
+export const 垂直排列 = () => {
+    const label = 'checked';
+    const defaultValue = true;
+    const groupId = 'GROUP-ID1';
+
+    const value = boolean(label, defaultValue, groupId);
+    return <CheckboxGroup row><Checkbox
+        value={'xiaoxin1'}>蜡笔小新</Checkbox>
+        <Checkbox
+            value={'xiaoxin2'}>风间</Checkbox>
+    </CheckboxGroup>;
+}
