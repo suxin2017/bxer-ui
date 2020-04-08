@@ -7,19 +7,23 @@ bxer ui 是一套参考众多开源库的阉割版本,主要面向学习研究,�
 - [sass](https://www.sass.hk/guide/)
 - [remixicon 字体库](https://remixicon.cn/)
 
+参考
+
+- [bfd ui](https://github.com/baifendian/bfd-ui/)
+
 ps: 使用 [sass](https://www.sass.hk/guide/) 的原因是不需要使用花括号 😁
 
 ### 安装
 
 组件库已经发布在 npm 中
 
-```js
+```
     npm install bxer-ui
 ```
 
 ### 开发
 
-```js
+```
     git clone 本仓库
 
     // 安装依赖
