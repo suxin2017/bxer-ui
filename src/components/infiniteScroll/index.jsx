@@ -5,22 +5,7 @@ import { useRef } from 'react';
 
 
 InfiniteScroll.propTypes = {
-    /**
-     * 输入框的值
-     */
-    value: PropTypes.string,
-    /**
-     * 输入框改变的回调
-     */
-    onChange: PropTypes.func,
-    /**
-     * 是否禁用
-     */
-    disabled: PropTypes.bool,
-    /**
-     * 解决中文输入法获取空格字母问题
-     */
-    disabledZhInput: PropTypes.bool
+  
 };
 
 function usePrevious(value) {
